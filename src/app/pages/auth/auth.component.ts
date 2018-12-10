@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  profiled = false;
+
+  constructor(public auth: AuthService,
+              private router: Router) {}
 
   ngOnInit() {
+    const userObject: any = this.auth.user;
+    userObject.subscribe(u => {
+      if (u) {
+        this.router.navigate(['/profile']);
+      } else {
+        this.profiled = true;
+      }
+    });
   }
 
 }

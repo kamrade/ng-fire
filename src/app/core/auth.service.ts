@@ -79,6 +79,8 @@ export class AuthService {
             uid: user.uid,
             email: user.email,
             roles: {
+              admin: false,
+              editor: false,
               subscriber: true
             },
             displayName: user.displayName,
@@ -90,6 +92,32 @@ export class AuthService {
       }).catch((err) => {
         console.log(':: error', err);
       });
+  }
+
+  canRead(user: User): boolean {
+    const allowed = ['admin', 'editor', 'subscriber'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  canEdit(user: User): boolean {
+    const allowed = ['admin', 'editor'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  canDelete(user: User): boolean {
+    const allowed = ['admin'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  // determines if user has matching
+  private checkAuthorization(user: User, allowedRoles: string[]): boolean {
+    if (!user) return false;
+    for (const role of allowedRoles) {
+      if (user.roles[role]) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }

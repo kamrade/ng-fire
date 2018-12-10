@@ -1,7 +1,8 @@
 <div class="posts-container">
-  <div *ngFor="let post of allPosts.posts | async">
+  <div class="mb-5" *ngFor="let post of allPosts.posts | async">
     <!-- <p><small>{{ post | json }}</small></p> -->
     <h3>{{ post.title}}</h3>
     <p>{{ post.content }}</p>
+    <button class="btn btn-sm btn-success">Edit</button>
   </div>
 </div>
