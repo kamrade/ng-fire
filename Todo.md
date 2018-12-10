@@ -2,4 +2,11 @@
 
 + Сделать user-profile более обширным
 - Добавить возможность и UI CRUD для posts
+  - Create
+  - Read
+  - Update
+  - Delete
 - Создание пользователей с помощью Email.
++ Сделать модальное окно
+- Застайлить модалку
+- Popup dialogs. Popup confirmation. Popup edit.
