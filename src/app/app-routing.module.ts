@@ -7,6 +7,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { PublicComponent } from './pages/public/public.component';
 
 const routes: Routes = [{
   path: '',
@@ -27,6 +28,9 @@ const routes: Routes = [{
 }, {
   path: 'login',
   component: AuthComponent
+}, {
+  path: 'public',
+  component: PublicComponent
 }];
 
 @NgModule({

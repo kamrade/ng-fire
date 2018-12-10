@@ -13,6 +13,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { PublicComponent } from './pages/public/public.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AuthComponent } from './pages/auth/auth.component';
     UserProfileComponent,
     DashboardComponent,
     SettingsComponent,
-    AuthComponent
+    AuthComponent,
+    PublicComponent
   ],
   imports: [
     BrowserModule,

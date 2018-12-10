@@ -8,13 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  favoriteColor?: string;
-}
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +25,7 @@ export class AuthService {
     this.user = this.afAuth.authState
       .pipe(switchMap(user => {
         if (user) {
+          // TODO: выяснить что делает вот это
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -83,11 +78,14 @@ export class AuthService {
           const data: User = {
             uid: user.uid,
             email: user.email,
+            roles: {
+              subscriber: true
+            },
             displayName: user.displayName,
             photoURL: user.photoURL
           }
 
-          return userRef.set(data);
+          return userRef.set(data, { merge: true });
         }
       }).catch((err) => {
         console.log(':: error', err);
