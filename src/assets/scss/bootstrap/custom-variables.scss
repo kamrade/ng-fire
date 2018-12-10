@@ -1,3 +1,14 @@
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #F8567D;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #2EC87E;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
 $spacer: 1.25rem;
 $spacers: ();
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -13,4 +24,4 @@ $spacers: map-merge(
   $spacers
 );
 
-$font-family-sans-serif: 'Roboto Mono', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif: 'Roboto Mono', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
