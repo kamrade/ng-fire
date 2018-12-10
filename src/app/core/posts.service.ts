@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 interface Post {
   title: string;
@@ -12,8 +12,9 @@ interface Post {
 })
 export class PostsService {
 
-  postsCollection: AngularFirestoreCollection<Post>
-  posts: Observable<Post[]>
+  postsCollection: AngularFirestoreCollection<Post>;
+  posts: Observable<Post[]>;
+  // allPosts: any;
 
   constructor(private afs: AngularFirestore) {
     this.getPosts();
@@ -22,5 +23,6 @@ export class PostsService {
   getPosts() {
     this.postsCollection = this.afs.collection('posts'); // reference
     this.posts = this.postsCollection.valueChanges();    // observable of posts data
+    // this.allPosts = this.posts.subscribe(post => post);
   }
 }

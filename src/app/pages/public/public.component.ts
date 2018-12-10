@@ -10,8 +10,6 @@ export class PublicComponent implements OnInit {
 
   constructor(public allPosts: PostsService) { }
 
-  ngOnInit() {
-    this.allPosts.posts.subscribe(post => console.log(post));
-  }
+  ngOnInit() {}
 
 }
