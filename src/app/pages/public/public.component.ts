@@ -12,4 +12,8 @@ export class PublicComponent implements OnInit {
 
   ngOnInit() {}
 
+  editPost(post) {
+    console.log(':: edit post', post)
+  }
+
 }

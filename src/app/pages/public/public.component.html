@@ -3,7 +3,11 @@
     <!-- <p><small>{{ post | json }}</small></p> -->
     <h3>{{ post.title}}</h3>
     <p>{{ post.content }}</p>
-    <button class="btn btn-sm btn-warning mr-1">Edit</button>
-    <button class="btn btn-sm btn-danger">Delete</button>
+
+    <div class="operations-block">
+      <button (click)="editPost(post)" class="btn btn-sm btn-warning mr-1">Edit post</button>
+      <button class="btn btn-sm btn-danger">Remove post</button>
+    </div>
+
   </div>
 </div>
