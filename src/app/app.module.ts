@@ -15,6 +15,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PublicComponent } from './pages/public/public.component';
+import { ModalComponent } from './core/modal.directive';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PublicComponent } from './pages/public/public.component';
     DashboardComponent,
     SettingsComponent,
     AuthComponent,
-    PublicComponent
+    PublicComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
