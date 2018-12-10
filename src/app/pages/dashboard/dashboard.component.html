@@ -10,8 +10,8 @@
     <div class="modal">
       <div class="modal-body">
         <h1>A Custom Modal!</h1>
-        <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
-        <button (click)="closeModal('custom-modal-1');">Close</button>
+        <p>Home page text: <input class="form-control form-control-sm" type="text" [(ngModel)]="bodyText" /></p>
+        <button class="btn btn-sm btn-primary" (click)="closeModal('custom-modal-1');">Close</button>
       </div>
     </div>
     <div class="modal-background"></div>
@@ -20,7 +20,7 @@
   <modal id="custom-modal-2">
     <div class="modal">
       <div class="modal-body">
-        <h1 style="height:1000px">A Tall Custom Modal!</h1>
+        <h1>A Custom Modal!</h1>
         <button (click)="closeModal('custom-modal-2');">Close</button>
       </div>
     </div>
