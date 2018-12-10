@@ -1,5 +1,5 @@
 <div>
-  Loading...
+  <div *ngIf="!profiled">Loading...</div>
   <div *ngIf="profiled">
     <h3>Howdy, guest</h3>
     <p>Login to get started...</p>
@@ -8,11 +8,17 @@
     <div class="signup-form">
       <hr class="my-3" />
 
-      <form #signup="ngForm" (submit)="createNewUser($event, signup)" novalidate>
+      <form #signup="ngForm" (submit)="signUp($event, signup)" novalidate>
         <input
+          placeholder="Display name"
+          name="displayName" ngModel required #displayName="ngModel"
+          type="text" class="form-control form-control-sm mb-2">
+        <input
+          placeholder="email"
           name="email" ngModel required #email="ngModel"
           type="text" class="form-control form-control-sm mb-2">
         <input
+          placeholder="password"
           name="password" ngModel required type="password" #password="ngModel"
           class="form-control form-control-sm mb-2" />
         <button type="submit" class="btn btn-sm btn-primary mb-2">Sign Up</button>
@@ -25,9 +31,11 @@
 
       <form #signin="ngForm" (submit)="signIn($event, signin)" novalidate>
         <input
+          placeholder="email"
           name="email" ngModel required #email="ngModel"
           type="text" class="form-control form-control-sm mb-2">
         <input
+          placeholder="password"
           name="password" ngModel required type="password" #password="ngModel"
           class="form-control form-control-sm mb-2" />
         <button type="submit" class="btn btn-sm btn-primary mb-2">Sign In</button>

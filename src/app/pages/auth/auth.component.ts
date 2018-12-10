@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  createNewUser(event, formData:NgForm) {
+  signUp(event, formData:NgForm) {
     event.preventDefault();
     this.auth.emailSignUp(formData.value);
   }
