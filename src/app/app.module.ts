@@ -6,19 +6,28 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { CoreModule } from './core/core.module';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DashboardComponent,
+    SettingsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    CoreModule
+    CoreModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
