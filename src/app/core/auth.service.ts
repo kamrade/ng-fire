@@ -71,7 +71,6 @@ export class AuthService {
         // if user exists we don't create anything
         if (doc.exists) {
           console.log(':: user exists already');
-
         } else {
           // if user sign first time, we create new database document for this user
           console.log(':: create new user in database');

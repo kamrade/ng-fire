@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -29,7 +30,8 @@ import { PublicComponent } from './pages/public/public.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

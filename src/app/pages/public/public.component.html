@@ -1,8 +1,25 @@
 <div class="posts-container">
-  <div class="mb-5" *ngFor="let post of allPosts.posts | async">
+
+  <div class="add-new mb-5">
+    <form #f="ngForm" (submit)="submitNewPost($event, f)" novalidate>
+      <input
+        name="title" ngModel required #title="ngModel"
+        type="text" class="form-control form-control-sm mb-2">
+      <textarea
+        name="content" ngModel required #content="ngModel"
+        class="form-control form-control-sm mb-2" id="" cols="30" rows="10"></textarea>
+      <button type="submit" class="btn btn-sm btn-primary mb-2">Add new post</button>
+    </form>
+    <hr />
+  </div>
+
+
+  <div class="mb-5" *ngFor="let post of posts.postsWithIds | async">
     <!-- <p><small>{{ post | json }}</small></p> -->
     <h3>{{ post.title}}</h3>
+    <p class="text-muted"><small>{{ post.id }}</small></p>
     <p>{{ post.content }}</p>
+
 
     <div class="operations-block">
       <button (click)="editPost(post)" class="btn btn-sm btn-warning mr-1">Edit post</button>
