@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as firebase from 'firebase/app';
+// import { AngularFire } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
@@ -9,6 +10,11 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { User } from './user';
+
+export class EmailPasswordCredentials {
+  email: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +38,32 @@ export class AuthService {
         }
       }));
 
+  }
+
+  emailSignUp(credentials: EmailPasswordCredentials): any {
+    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
+      .then((credential) => {
+        console.log(':: success', credential);
+        this.updateUserData(credential.user);
+      })
+      .catch(error => console.log(':: error', error));
+  }
+
+  emailSignIn(credentials: EmailPasswordCredentials): any {
+    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
+      .then(() => {
+        console.log(':: logged in')
+      })
+      .catch((err) => {
+        let errCode = err.code;
+        let errMessage = err.message;
+        if (errCode === 'auth/wrong-password') {
+          alert('Wrong password.');
+        } else {
+          alert(errMessage);
+        }
+        console.log(err);
+      });
   }
 
   signOut() {
@@ -82,7 +114,7 @@ export class AuthService {
               editor: false,
               subscriber: true
             },
-            displayName: user.displayName,
+            displayName: user.displayName || user.email,
             photoURL: user.photoURL
           }
 

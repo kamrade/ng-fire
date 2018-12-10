@@ -4,6 +4,37 @@
     <h3>Howdy, guest</h3>
     <p>Login to get started...</p>
     <button (click)="auth.googleLogin()" class="btn btn-sm btn-primary">Login with Google</button>
+
+    <div class="signup-form">
+      <hr class="my-3" />
+
+      <form #signup="ngForm" (submit)="createNewUser($event, signup)" novalidate>
+        <input
+          name="email" ngModel required #email="ngModel"
+          type="text" class="form-control form-control-sm mb-2">
+        <input
+          name="password" ngModel required type="password" #password="ngModel"
+          class="form-control form-control-sm mb-2" />
+        <button type="submit" class="btn btn-sm btn-primary mb-2">Sign Up</button>
+      </form>
+      <hr />
+    </div>
+
+    <div class="signin-form">
+      <hr class="my-3" />
+
+      <form #signin="ngForm" (submit)="signIn($event, signin)" novalidate>
+        <input
+          name="email" ngModel required #email="ngModel"
+          type="text" class="form-control form-control-sm mb-2">
+        <input
+          name="password" ngModel required type="password" #password="ngModel"
+          class="form-control form-control-sm mb-2" />
+        <button type="submit" class="btn btn-sm btn-primary mb-2">Sign In</button>
+      </form>
+      <hr />
+    </div>
+
   </div>
 </div>
 

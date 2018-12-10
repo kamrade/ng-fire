@@ -1,10 +1,12 @@
 @import "variables";
 
 .navigation {
+  font-size: 12px;
+
   a, a:link, a:visited {
     color: $gray-600;
     font-weight: 500;
-    padding-right: 10px;
+    padding-right: 7px;
 
     &.active-link {
       color: $gray-900;
