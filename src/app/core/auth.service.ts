@@ -27,6 +27,7 @@ export class AuthService {
               private afs: AngularFirestore,
               private router: Router) {
 
+    //// Get auth data, then get firestore user document || null
     this.user = this.afAuth.authState
       .pipe(switchMap(user => {
         if (user) {
@@ -36,6 +37,15 @@ export class AuthService {
         }
       }));
 
+  }
+
+  signOut() {
+    firebase.auth().signOut()
+      .then(() => {
+        console.log(':: signed out');
+      }).catch((error) => {
+        console.log(':: sign out failed', error);
+      })
   }
 
   googleLogin() {

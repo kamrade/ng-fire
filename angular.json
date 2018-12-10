@@ -25,6 +25,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss/bootstrap/",
+              ]
+            },
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,10 @@
+@import "variables";
+
+.card-user-details {
+
+  p {
+    margin: 0;
+    margin-bottom: map-get($spacers, 2);
+  }
+
+}
