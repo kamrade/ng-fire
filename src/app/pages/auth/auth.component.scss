@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins/index";
 
 .auth-dialog {
   max-width: 800px;
@@ -9,11 +10,15 @@
   text-align: center;
   box-shadow: 0 0 32px rgba(0,0,0,0.08);
 
-  .auth-form-status {
+  @include media-max-width(sm) {
+    margin-top: 20px;
+    max-width: 440px;
+  }
+
+  .auth-dialog-status {
     padding: map-get($spacers, 3);
     text-align: center;
   }
-
 
   .logo-container {
     position: relative;
@@ -38,6 +43,8 @@
   }
 
   .auth-dialog-log {
+    padding: 40px 20px;
+    padding-left: 40px;
     p {
       margin: 0;
       font-size: .75rem;

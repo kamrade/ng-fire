@@ -1,29 +1,26 @@
 <div class="auth-dialog">
 
   <div class="row">
-    <div class="col-md-6">
-      <div class="auth-dialog-status" *ngIf="signed">Loading...</div>
+    <div class="col-sm-6">
 
+      <div class="auth-dialog-status" *ngIf="signed">
+        Loading...
+      </div>
       <div *ngIf="!signed">
         <div class="logo-container"></div>
-        <div class="auth-dialog-content">
-          <router-outlet></router-outlet>
-        </div>
+        <router-outlet></router-outlet>
       </div>
-
       <div class="auth-dialog-log">
         <p class="current-user">Current user: guest</p>
         <p class="description">Login to get started...</p>
       </div>
+
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <div class="auth-dialog-image-container"></div>
     </div>
-
   </div>
-
-
 </div>
 
 <!-- <div *ngIf="auth.user | async; then authenticated else guest">Loading...</div>

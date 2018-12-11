@@ -27,5 +27,6 @@
   </form>
 
   <p>New user? <a routerLinkActive="active-link" routerLink="/auth/signup">Create account</a>{{' '}}</p>
+  <a (click)="auth.googleLogin()" class="btn btn-outline-secondary btn-block mb-2">Signin with Google</a>
 
 </div>

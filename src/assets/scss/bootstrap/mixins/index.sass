@@ -1,0 +1,7 @@
+=media-max-width($bp)
+  @media (max-width: map-get($grid-breakpoints, $bp))
+    @content
+
+=media-min-width($bp)
+  @media (min-width: map-get($grid-breakpoints, $bp))
+    @content

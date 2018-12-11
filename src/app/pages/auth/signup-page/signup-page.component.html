@@ -1,9 +1,9 @@
-<div class="auth-form-wrapper signup-form">
+<div class="auth-form-wrapper auth-dialog-container signup-form">
 
   <h3 class="form-title">Sign Up</h3>
 
   <form class="mb-3" #signup="ngForm" (submit)="signUp($event, signup)" novalidate>
-    <div class="auth-dialog-container">
+    <div>
 
       <label  class="form-label mb-2">
         <span>Display name</span>
@@ -32,8 +32,7 @@
 
   </form>
 
-  <div class="auth-dialog-container">
-    <button (click)="auth.googleLogin()" class="btn btn-primary btn-block mb-2">Login with Google</button>
+  <div>
     <a routerLinkActive="active-link" routerLink="/auth/signin">Sign in</a>{{' '}}
   </div>
 
