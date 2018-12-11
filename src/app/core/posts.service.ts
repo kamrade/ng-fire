@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
 
 import { Post, PostWithID } from './post';
@@ -13,7 +12,7 @@ export class PostsService {
 
   postsCollection: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
-  postsWithIds: Observable<any[]>;
+  postsWithIds: Observable<PostWithID[]>;
 
   constructor(private afs: AngularFirestore) {
     this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('createdAt', 'desc')); // reference

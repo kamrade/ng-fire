@@ -22,6 +22,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MainNavigationComponent } from './shared/main-navigation/main-navigation.component';
 import { IconsModule } from './icons/icons.module';
 import { SinglePostComponent } from './pages/public/single-post/single-post.component';
+import { EntitiesComponent } from './pages/settings/entities/entities.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SinglePostComponent } from './pages/public/single-post/single-post.comp
     SignupPageComponent,
     NotFoundComponent,
     MainNavigationComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    EntitiesComponent
   ],
   imports: [
     BrowserModule,

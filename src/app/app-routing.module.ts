@@ -11,6 +11,7 @@ import { PublicComponent } from './pages/public/public.component';
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { EntitiesComponent } from './pages/settings/entities/entities.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,7 +24,15 @@ const routes: Routes = [{
 }, {
   path: 'setting',
   canActivate: [AuthGuard],
-  component: SettingsComponent
+  component: SettingsComponent,
+  children: [{
+    path: '',
+    redirectTo: 'status',
+    pathMatch: 'full'
+  }, {
+    path: ':id',
+    component: EntitiesComponent
+  }]
 }, {
   path: 'profile',
   canActivate: [AuthGuard],

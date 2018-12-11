@@ -1,0 +1,21 @@
+@import "variables";
+
+.page-settings {
+  display: flex;
+  justify-content: space-around;
+
+  .settings-sidebar {
+    width: 280px;
+    font-weight: 600;
+    .link {
+      color: $gray-600;
+      &.active-link {
+        color: $gray-900;
+      }
+    }
+  }
+
+  .settings-workspace {
+    flex-grow: 3;
+  }
+}

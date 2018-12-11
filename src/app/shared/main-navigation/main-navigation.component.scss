@@ -1,18 +1,27 @@
 @import "variables";
 
 .navigation {
-  font-size: 12px;
-
+  font-size: 14px;
   padding: 20px 0;
 
   a, a:link, a:visited {
     color: $gray-600;
-    font-weight: 500;
+    font-weight: 600;
     padding-right: 7px;
     line-height: 20px;
+    display: inline-block;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: $gray-900;
+    }
 
     &.active-link {
       color: $gray-900;
+      border-bottom: 2px solid $gray-900;
     }
 
   }

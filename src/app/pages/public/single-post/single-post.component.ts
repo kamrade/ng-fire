@@ -29,7 +29,8 @@ export class SinglePostComponent implements OnInit {
     this.mode = 'view';
     this.posts.updatePost(this.singlePost.id, {
       title: this.singlePost.title,
-      content: this.singlePost.content
+      content: this.singlePost.content,
+      updatedAt: Date.now()
     });
   }
 

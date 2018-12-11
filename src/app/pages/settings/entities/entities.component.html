@@ -1,0 +1,8 @@
+<div>
+  Entitie route: {{ currentRoute }}
+
+  <div *ngFor="let status of s.statuses | async">
+    <p><span class="mr-1">{{ status.title }}</span>{{ status.description}}</p>
+  </div>
+
+</div>

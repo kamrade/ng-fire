@@ -7,12 +7,14 @@
 - Застайлить модалку
 - Popup dialogs. Popup confirmation. Popup edit.
 - Сообщения валидации в auth.
-- Добавить поля createdAt, updatedAt
-- Добавить возможность и UI CRUD для posts:
+- Добавить поля
+  + createdAt,
+  - updatedAt
++ Добавить возможность и UI CRUD для posts:
   + Create
   + Read
-  - Update
-  - Delete
+  + Update
+  + Delete
 - Новые сущности:
   - Статус проекта
   - Регион

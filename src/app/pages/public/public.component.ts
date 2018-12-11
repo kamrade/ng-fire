@@ -32,11 +32,13 @@ export class PublicComponent implements OnInit {
     event.preventDefault();
     const formContent: Post = f.value;
     const createdAt = Date.now();
+    const updatedAt = Date.now();
 
     this.posts.createPost({
       ownerID: this.userID,
       ownerDisplayName: this.userDisplayName,
       createdAt,
+      updatedAt,
       ...formContent
     });
 

@@ -1,3 +1,17 @@
 body {
   overflow-y: scroll;
 }
+
+.icon-small {
+  height: 12px !important;
+  width: 12px !important;
+  display: inline-block;
+  position: relative;
+  bottom: 1.5px;
+  margin-right: 5px;
+
+  svg {
+    height: 12px;
+    width: 12px;
+  }
+}
