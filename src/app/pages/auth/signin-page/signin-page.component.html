@@ -1,0 +1,31 @@
+<div class="auth-form-wrapper auth-dialog-container signin-form">
+
+  <h3 class="form-title">Sign in</h3>
+
+  <form class="mb-3" #signin="ngForm" (submit)="signIn($event, signin)" novalidate>
+
+    <div class="">
+
+      <label class="form-label mb-2">
+        <span>Email</span>
+        <input
+          name="email" ngModel required #email="ngModel"
+          type="text" class="form-control mb-2" />
+      </label>
+
+      <label class="form-label mb-2">
+        <span>Password</span>
+        <input
+          name="password" ngModel required type="password" #password="ngModel"
+          class="form-control mb-2" />
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">Sign In</button>
+
+  </form>
+
+  <p>New user? <a routerLinkActive="active-link" routerLink="/auth/signup">Create account</a>{{' '}}</p>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="auth-form-wrapper signup-form">
+
+  <h3 class="form-title">Sign Up</h3>
+
+  <form class="mb-3" #signup="ngForm" (submit)="signUp($event, signup)" novalidate>
+    <div class="auth-dialog-container">
+
+      <label  class="form-label mb-2">
+        <span>Display name</span>
+        <input
+          name="displayName" ngModel required #displayName="ngModel"
+          type="text" class="form-control mb-2" />
+      </label>
+
+      <label class="form-label mb-2">
+        <span>Email</span>
+        <input
+          name="email" ngModel required #email="ngModel"
+          type="text" class="form-control mb-2" />
+      </label>
+
+      <label class="form-label mb-2">
+        <span>Password</span>
+        <input
+          name="password" ngModel required type="password" #password="ngModel"
+          class="form-control mb-2" />
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+
+  </form>
+
+  <div class="auth-dialog-container">
+    <button (click)="auth.googleLogin()" class="btn btn-primary btn-block mb-2">Login with Google</button>
+    <a routerLinkActive="active-link" routerLink="/auth/signin">Sign in</a>{{' '}}
+  </div>
+
+</div>

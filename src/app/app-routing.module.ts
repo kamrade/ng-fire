@@ -8,6 +8,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PublicComponent } from './pages/public/public.component';
+import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
+import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
@@ -26,11 +29,25 @@ const routes: Routes = [{
   canActivate: [AuthGuard],
   component: UserProfileComponent
 }, {
-  path: 'login',
-  component: AuthComponent
+  path: 'auth',
+  component: AuthComponent,
+  children: [{
+    path: '',
+    redirectTo: 'signin',
+    pathMatch: 'full'
+  }, {
+    path: 'signin',
+    component: SigninPageComponent
+  }, {
+    path: 'signup',
+    component: SignupPageComponent
+  }]
 }, {
   path: 'public',
   component: PublicComponent
+}, {
+  path: '**',
+  component: NotFoundComponent
 }];
 
 @NgModule({

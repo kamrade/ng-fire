@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
-import { NgForm } from '@angular/forms';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  profiled = false;
+  signed = true;
 
   constructor(public auth: AuthService,
               private router: Router) {}
@@ -19,21 +19,11 @@ export class AuthComponent implements OnInit {
     const userObject: any = this.auth.user;
     userObject.subscribe(u => {
       if (u) {
+        this.signed = true;
         this.router.navigate(['/profile']);
       } else {
-        this.profiled = true;
+        this.signed = false;
       }
     });
   }
-
-  signUp(event, formData:NgForm) {
-    event.preventDefault();
-    this.auth.emailSignUp(formData.value);
-  }
-
-  signIn(event, formData:NgForm) {
-    event.preventDefault();
-    this.auth.emailSignIn(formData.value);
-  }
-
 }

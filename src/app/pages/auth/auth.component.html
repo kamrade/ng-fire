@@ -1,49 +1,29 @@
-<div>
-  <div *ngIf="!profiled">Loading...</div>
-  <div *ngIf="profiled">
-    <h3>Howdy, guest</h3>
-    <p>Login to get started...</p>
-    <button (click)="auth.googleLogin()" class="btn btn-sm btn-primary">Login with Google</button>
+<div class="auth-dialog">
 
-    <div class="signup-form">
-      <hr class="my-3" />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="auth-dialog-status" *ngIf="signed">Loading...</div>
 
-      <form #signup="ngForm" (submit)="signUp($event, signup)" novalidate>
-        <input
-          placeholder="Display name"
-          name="displayName" ngModel required #displayName="ngModel"
-          type="text" class="form-control form-control-sm mb-2">
-        <input
-          placeholder="email"
-          name="email" ngModel required #email="ngModel"
-          type="text" class="form-control form-control-sm mb-2">
-        <input
-          placeholder="password"
-          name="password" ngModel required type="password" #password="ngModel"
-          class="form-control form-control-sm mb-2" />
-        <button type="submit" class="btn btn-sm btn-primary mb-2">Sign Up</button>
-      </form>
-      <hr />
+      <div *ngIf="!signed">
+        <div class="logo-container"></div>
+        <div class="auth-dialog-content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+
+      <div class="auth-dialog-log">
+        <p class="current-user">Current user: guest</p>
+        <p class="description">Login to get started...</p>
+      </div>
     </div>
 
-    <div class="signin-form">
-      <hr class="my-3" />
-
-      <form #signin="ngForm" (submit)="signIn($event, signin)" novalidate>
-        <input
-          placeholder="email"
-          name="email" ngModel required #email="ngModel"
-          type="text" class="form-control form-control-sm mb-2">
-        <input
-          placeholder="password"
-          name="password" ngModel required type="password" #password="ngModel"
-          class="form-control form-control-sm mb-2" />
-        <button type="submit" class="btn btn-sm btn-primary mb-2">Sign In</button>
-      </form>
-      <hr />
+    <div class="col-md-6">
+      <div class="auth-dialog-image-container"></div>
     </div>
 
   </div>
+
+
 </div>
 
 <!-- <div *ngIf="auth.user | async; then authenticated else guest">Loading...</div>

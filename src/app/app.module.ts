@@ -16,6 +16,11 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PublicComponent } from './pages/public/public.component';
 import { ModalComponent } from './core/modal.directive';
+import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
+import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MainNavigationComponent } from './shared/main-navigation/main-navigation.component';
+import { IconsModule } from './icons/icons.module';
 
 
 @NgModule({
@@ -26,14 +31,19 @@ import { ModalComponent } from './core/modal.directive';
     SettingsComponent,
     AuthComponent,
     PublicComponent,
-    ModalComponent
+    ModalComponent,
+    SigninPageComponent,
+    SignupPageComponent,
+    NotFoundComponent,
+    MainNavigationComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

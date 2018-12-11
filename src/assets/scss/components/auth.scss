@@ -1,0 +1,28 @@
+.auth-form-wrapper {
+
+  .form-label {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .form-control {
+    // border-radius: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-title {
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: map-get($spacers, 5);
+  }
+
+}
+
+.auth-dialog-container {
+  padding-left: 40px;
+  padding-right: 20px;
+}
