@@ -3,10 +3,13 @@
 .navigation {
   font-size: 12px;
 
+  padding: 20px 0;
+
   a, a:link, a:visited {
     color: $gray-600;
     font-weight: 500;
     padding-right: 7px;
+    line-height: 20px;
 
     &.active-link {
       color: $gray-900;
