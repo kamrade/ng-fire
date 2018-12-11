@@ -1,0 +1,28 @@
+<div class="single-post">
+
+  <div *ngIf="mode === 'view'">
+    <h3>{{ singlePost.title}}</h3>
+    <p class="text-muted"><small>{{ singlePost.createdAt | date:'medium' }} by <b>{{ singlePost.ownerDisplayName }}</b></small></p>
+    <p>{{ singlePost.content }}</p>
+
+    <div class="operations-block">
+      <button (click)="editPost()" class="btn btn-sm btn-warning mr-1">Edit post</button>
+      <button (click)="removePost()" class="btn btn-sm btn-danger">Remove post</button>
+    </div>
+  </div>
+
+  <div *ngIf="mode === 'edit'">
+    <label class="form-label">
+      <span>Post title</span>
+      <input [(ngModel)]="singlePost.title" type="text" class="form-control">
+    </label>
+    <label class="form-label">
+      <span>Post content</span>
+      <textarea [(ngModel)]="singlePost.content" type="text" class="form-control"></textarea>
+    </label>
+
+    <button (click)="savePost()" class="btn btn-sm btn-success mr-1">Save post</button>
+
+  </div>
+
+</div>

@@ -42,13 +42,4 @@ export class PublicComponent implements OnInit {
 
     f.reset();
   }
-
-  editPost(post) {
-    console.log(':: edit post', post);
-  }
-
-  removePost(post) {
-    this.posts.removePost(post.id);
-  }
-
 }

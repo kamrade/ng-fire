@@ -13,18 +13,10 @@
     <hr />
   </div>
 
-
   <div class="mb-5" *ngFor="let post of posts.postsWithIds | async">
-    <!-- <p><small>{{ post | json }}</small></p> -->
-    <h3>{{ post.title}}</h3>
-    <p class="text-muted"><small>{{ post.createdAt | date:'medium' }} by <b>{{ post.ownerDisplayName }}</b></small></p>
-    <p>{{ post.content }}</p>
-
-
-    <div class="operations-block">
-      <button (click)="editPost(post)" class="btn btn-sm btn-warning mr-1">Edit post</button>
-      <button (click)="removePost(post)" class="btn btn-sm btn-danger">Remove post</button>
-    </div>
-
+    <app-single-post [singlePost]="post"></app-single-post>
   </div>
+
 </div>
+
+<!-- <p><small>{{ post | json }}</small></p> -->

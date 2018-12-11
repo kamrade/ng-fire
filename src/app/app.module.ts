@@ -21,6 +21,7 @@ import { SignupPageComponent } from './pages/auth/signup-page/signup-page.compon
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MainNavigationComponent } from './shared/main-navigation/main-navigation.component';
 import { IconsModule } from './icons/icons.module';
+import { SinglePostComponent } from './pages/public/single-post/single-post.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { IconsModule } from './icons/icons.module';
     SigninPageComponent,
     SignupPageComponent,
     NotFoundComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    SinglePostComponent
   ],
   imports: [
     BrowserModule,
