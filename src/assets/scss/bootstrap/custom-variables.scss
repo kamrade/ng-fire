@@ -10,10 +10,10 @@ $gray-800: #353C49;
 $gray-900: #1E222A;
 $black:    #000;
 
-$brand: #052F66;
+$brand:   #052F66;
 
 // $blue:    #007bff;
-$blue:    $brand;
+$blue:    #1074F7;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
@@ -43,8 +43,14 @@ $spacers: map-merge(
 
 $font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-$body-bg: $brand;
+$body-bg: $white;
 
 $grid-gutter-width: 20px;
 
 $input-btn-focus-width: .1rem;
+
+$font-size-base: 0.875rem;
+$font-size-lg: 1rem;
+$font-size-sm: 0.75rem;
+
+$paragraph-margin-bottom: 10px;

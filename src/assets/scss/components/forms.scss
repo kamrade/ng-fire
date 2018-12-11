@@ -1,0 +1,27 @@
+.form-label {
+  display: block;
+  line-height: 20px;
+}
+
+.link {
+  line-height: 20px;
+  display: inline-block;
+}
+
+.btn {
+  line-height: 26px;
+}
+
+.form-control {
+  line-height: 26px;
+  height: 40px;
+  display: block;
+  background-color: $gray-100;
+  border: 1px solid $gray-100;
+
+  &:focus {
+    border: 1px solid $primary;
+    outline: none;
+    box-shadow: none;
+  }
+}
