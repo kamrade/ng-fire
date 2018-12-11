@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../core/posts.service';
 import { NgForm } from '@angular/forms';
 import { Post } from '../../core/post';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-public',
@@ -10,22 +11,44 @@ import { Post } from '../../core/post';
 })
 export class PublicComponent implements OnInit {
 
-  constructor(public posts: PostsService) { }
+  userID: string;
+  userDisplayName: string;
 
-  ngOnInit() {}
+  constructor(public auth: AuthService, public posts: PostsService) { }
+
+  ngOnInit() {
+    const userObject: any = this.auth.user;
+    userObject.subscribe(u => {
+      if (u) {
+        this.userID = u.uid;
+        this.userDisplayName = u.displayName;
+      } else {
+        console.log(":: not authenticated");
+      }
+    });
+  }
 
   submitNewPost(event, f:NgForm) {
     event.preventDefault();
-    console.log(":: create new post");
-
     const formContent: Post = f.value;
-    console.log(formContent);
-    this.posts.createPost(formContent);
+    const createdAt = Date.now();
 
+    this.posts.createPost({
+      ownerID: this.userID,
+      ownerDisplayName: this.userDisplayName,
+      createdAt,
+      ...formContent
+    });
+
+    f.reset();
   }
 
   editPost(post) {
-    console.log(':: edit post', post)
+    console.log(':: edit post', post);
+  }
+
+  removePost(post) {
+    this.posts.removePost(post.id);
   }
 
 }

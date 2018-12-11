@@ -42,7 +42,6 @@ export class AuthService {
   emailSignUp(credentials: EmailPasswordCredentials): any {
     return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
       .then((c) => {
-
         this.updateUserData({
           ...c.user,
           displayName: credentials.displayName
