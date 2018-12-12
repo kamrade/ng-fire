@@ -32,4 +32,23 @@ export class EntitiesComponent implements OnInit {
   ngOnInit() {
   }
 
+  createEntity(data) {
+    const statusID = data.value.title.toLowerCase().split(' ').join('_');
+
+    this.s.createStatus({
+      id: statusID,
+      ...data.value
+    });
+  }
+
+  removeEntity(id) {
+    console.log(id);
+    console.log(":: removing entity");
+    this.s.removeStatus(id);
+  }
+
+  updateEntity(entity) {
+    this.s.updateStatus(entity);
+  }
+
 }

@@ -41,20 +41,20 @@ export class PostsService {
   }
 
   createPost(post: Post) {
-    return this.postsCollection.add(post)
-      .then(p => console.log(':: post created'))
-      .catch(err => console.log(':: remove error'));
+    this.postsCollection.add(post)
+      .then(() => console.log(':: post created'))
+      .catch(err => console.log(':: remove error', err));
   }
 
   removePost(postID: string) {
-    return this.postsCollection.doc(postID).delete()
-      .then(p => console.log(':: post removed'))
-      .catch(err => console.log(':: remove error'));
+    this.postsCollection.doc(postID).delete()
+      .then(() => console.log(':: post removed'))
+      .catch(err => console.log(':: post remove error', err));
   }
 
   updatePost(id: string, newPostData: any) {
     this.postsCollection.doc(id).update(newPostData)
-      .then(p => console.log(':: post updated'))
-      .catch(err => console.log(':: update error'));
+      .then(() => console.log(':: post updated'))
+      .catch(err => console.log(':: post update error', err));
   }
 }

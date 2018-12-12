@@ -1,0 +1,21 @@
+<div [ngClass]="{'entity-card': true, 'entity-card-outline': mode === 'creation'}">
+
+  <div *ngIf="mode === 'simple'">
+    <button (click)="creationMode()" class="btn btn-sm btn-primary">Add new</button>
+  </div>
+
+  <div *ngIf="mode === 'creation'">
+
+    <form #f="ngForm" (submit)="create(f)">
+      <input
+        placeholder="title"
+        name="title" ngModel required #title="ngModel"
+        type="text" class="form-control mb-2">
+      <textarea  name="description" ngModel #description="ngModel" class="form-control textarea-sm mb-2" placeholder="description" rows="5"></textarea>
+      <button type="reset" (click)="simpleMode()" class="btn btn-sm btn-secondary">Cancel</button>{{' '}}
+      <button title="create new entity" type="submit" class="btn btn-sm btn-primary">Create</button>
+    </form>
+
+  </div>
+
+</div>

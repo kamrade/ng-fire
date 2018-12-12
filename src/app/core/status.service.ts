@@ -40,4 +40,27 @@ export class StatusService {
       }));
   }
 
+  createStatus(status: Status) {
+    const docRef = this.statusesCollection.doc(status.id);
+    docRef.set(status)
+      .then((s) => console.log(':: status created', s))
+      .catch(err => console.log(':: status create error', err));
+  }
+
+  removeStatus(id) {
+    this.statusesCollection.doc(id).delete()
+      .then(() => {
+        console.log(':: entity deleted');
+      }).catch((err) => {
+        console.log(':: error removing entity', err);
+      })
+  }
+
+  updateStatus(newStatusData: any) {
+    this.statusesCollection.doc(newStatusData.id).update(newStatusData)
+      .then(() => console.log(':: status updated'))
+      .catch(err => console.log(':: status update error', err));
+  }
+
+
 }

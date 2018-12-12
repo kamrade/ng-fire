@@ -8,7 +8,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +16,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     RouterModule.forRoot([])
   ],
+  exports: [],
   providers: [AuthService, ModalService],
   declarations: []
 })

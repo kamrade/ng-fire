@@ -1,0 +1,28 @@
+<div [ngClass]="{'entity-card': true, 'entity-card-outline': mode === 'edit'}">
+
+  <div *ngIf="mode === 'view'">
+
+    <p class="entity-card-title">{{ data.title }}</p>
+    <p class="entity-card-description">{{ data.description}}</p>
+
+    <button (click)="editMode()" class="btn btn-sm btn-secondary mr-1"><i-edit-2 class="icon-small"></i-edit-2>Edit</button>
+    <button (click)="remove(data.id)" class="btn btn-sm btn-light text-danger mr-1"><i-trash-2 class="icon-small"></i-trash-2>Remove</button>
+
+  </div>
+
+  <div *ngIf="mode === 'edit'">
+
+    <label class="form-label">
+      <span>Status title</span>
+      <input [(ngModel)]="data.title" type="text" class="form-control">
+    </label>
+    <label class="form-label">
+      <span>Status description</span>
+      <textarea [(ngModel)]="data.description" type="text" class="form-control"></textarea>
+    </label>
+
+    <button (click)="update()" class="btn btn-sm btn-success mr-1">Save status</button>
+
+  </div>
+
+</div>
