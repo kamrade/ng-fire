@@ -1,6 +1,7 @@
 <div class="container">
 
   <div class="add-new mb-5">
+
     <form style='max-width: 640px' #f="ngForm" (submit)="submitNewPost($event, f)" novalidate>
       <input
         name="title" ngModel required #title="ngModel"
@@ -10,10 +11,11 @@
         class="form-control mb-2" id="" cols="30" rows="5"></textarea>
       <button type="submit" class="btn btn-primary mb-2">Add new post</button>
     </form>
+
     <hr />
   </div>
 
-  <div class="mb-5" *ngFor="let post of postsService.postsWithIds | async">
+  <div class="mb-5" *ngFor="let post of firedataService.posts | async">
     <app-single-post [singlePost]="post"></app-single-post>
   </div>
 

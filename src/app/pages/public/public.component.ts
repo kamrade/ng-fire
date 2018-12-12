@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../../core/posts.service';
-import { FiredataService } from '../../core/firedata.service';
 import { NgForm } from '@angular/forms';
+
 import { Post } from '../../core/post';
+
+import { FiredataService } from '../../core/firedata.service';
 import { AuthService } from '../../core/auth.service';
 
 @Component({
@@ -17,7 +18,6 @@ export class PublicComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private postsService: PostsService,
     private firedataService: FiredataService) {}
 
   ngOnInit() {
@@ -30,10 +30,6 @@ export class PublicComponent implements OnInit {
         console.log(":: not authenticated");
       }
     });
-
-    this.firedataService.resp.subscribe((resp) => {
-      console.log(resp);
-    })
   }
 
   submitNewPost(event, f:NgForm) {
@@ -42,7 +38,7 @@ export class PublicComponent implements OnInit {
     const createdAt = Date.now();
     const updatedAt = Date.now();
 
-    this.postsService.createPost({
+    this.firedataService.postCreate$({
       ownerID: this.userID,
       ownerDisplayName: this.userDisplayName,
       createdAt,

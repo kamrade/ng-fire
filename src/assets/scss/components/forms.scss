@@ -1,6 +1,10 @@
 .form-label {
   display: block;
   line-height: 20px;
+
+  .form-label-sm {
+    font-size: $font-size-sm;
+  }
 }
 
 .link {
@@ -21,6 +25,11 @@
   display: block;
   background-color: $gray-100;
   border: 1px solid $gray-100;
+
+  &-sm {
+    line-height: 15px;
+    height: 30px;
+  }
 
   &:focus {
     border: 1px solid $primary;

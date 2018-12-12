@@ -1,12 +1,12 @@
 <div>
   <div *ngIf="currentRoute==='status'">
     <div class="row">
-      <div class="col-sm-6 col-md-4" *ngFor="let status of s.statuses | async">
+      <div class="col-md-6 col-lg-4" *ngFor="let status of firedataService.statuses | async">
 
-        <app-entity-card (onChange)="updateEntity($event)" (onRemove)="removeEntity($event)" [data]="status"></app-entity-card>
+        <app-entity-card (onChange)="updateEntity($event)" (onDelete)="deleteEntity($event)" [data]="status"></app-entity-card>
 
       </div>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-md-6 col-lg-4">
 
         <app-new-entity (onCreate)="createEntity($event)"></app-new-entity>
 

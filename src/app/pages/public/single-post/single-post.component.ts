@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostsService } from '../../../core/posts.service';
 
-import { Post, PostWithID } from '../../../core/post';
+import { FiredataService } from '../../../core/firedata.service';
+import { Post, PostComplex } from '../../../core/post';
 
 @Component({
   selector: 'app-single-post',
@@ -13,9 +13,9 @@ export class SinglePostComponent implements OnInit {
   mode = 'view';
 
   @Input()
-  singlePost: PostWithID;
+  singlePost: PostComplex;
 
-  constructor(public posts: PostsService) { }
+  constructor(public firedataService: FiredataService) { }
 
   ngOnInit() {}
 
@@ -24,18 +24,18 @@ export class SinglePostComponent implements OnInit {
   }
 
   savePost() {
-    console.log(this.singlePost)
-    console.log(':: save post');
+    console.log(':: saving post...');
     this.mode = 'view';
-    this.posts.updatePost(this.singlePost.id, {
-      title: this.singlePost.title,
-      content: this.singlePost.content,
+
+    this.firedataService.postUpdate$(this.singlePost.id, {
+      title: this.singlePost.data.title,
+      content: this.singlePost.data.content,
       updatedAt: Date.now()
     });
   }
 
-  removePost() {
-    this.posts.removePost(this.singlePost.id);
+  deletePost() {
+    this.firedataService.postDelete$(this.singlePost.id);
   }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-import { StatusService } from '../../../core/status.service';
+import { FiredataService } from '../../../core/firedata.service';
 
 @Component({
   selector: 'app-entities',
@@ -13,7 +13,10 @@ export class EntitiesComponent implements OnInit {
 
   currentRoute = '';
 
-  constructor(private route: ActivatedRoute, private router: Router, private s: StatusService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private firedataService: FiredataService) {
 
     this.route.url.subscribe(value => {
       this.currentRoute = value[0].path;
@@ -33,22 +36,18 @@ export class EntitiesComponent implements OnInit {
   }
 
   createEntity(data) {
-    const statusID = data.value.title.toLowerCase().split(' ').join('_');
-
-    this.s.createStatus({
-      id: statusID,
+    this.firedataService.statusCreate$({
       ...data.value
     });
   }
 
-  removeEntity(id) {
-    console.log(id);
-    console.log(":: removing entity");
-    this.s.removeStatus(id);
+  deleteEntity(id) {
+    console.log(":: removing entity...");
+    this.firedataService.statusDelete$(id);
   }
 
   updateEntity(entity) {
-    this.s.updateStatus(entity);
+    this.firedataService.statusUpdate$(entity.id, entity.data);
   }
 
 }

@@ -9,30 +9,42 @@ export class EntityCardComponent implements OnInit {
 
   mode: 'view' | 'edit' = 'view';
 
-  @Output() onRemove = new EventEmitter<any>();
+  @Output() onDelete = new EventEmitter<any>();
   @Output() onChange = new EventEmitter<any>();
 
   @Input()
   data: any;
 
+  formData: any;
+  savedData: any;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.formData = JSON.parse(JSON.stringify(this.data));
+    this.savedData = JSON.parse(JSON.stringify(this.data));
+  }
 
   viewMode() {
     this.mode = 'view';
   }
 
   editMode() {
+    this.savedData = JSON.parse(JSON.stringify(this.formData));
     this.mode = 'edit';
   }
 
-  remove(id) {
-    this.onRemove.emit(id);
+  cancel() {
+    this.formData = JSON.parse(JSON.stringify(this.savedData));
+    this.viewMode();
+  }
+
+  delete(id) {
+    this.onDelete.emit(id);
   }
 
   update() {
-    this.onChange.emit(this.data);
+    this.onChange.emit(this.formData);
     this.viewMode();
   }
 

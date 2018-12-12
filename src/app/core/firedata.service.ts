@@ -3,28 +3,36 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument,
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Note, NoteComplex } from './note';
 import { Post, PostComplex } from './post';
+import { Region, RegionComplex } from './region';
+import { Status, StatusComplex } from './status';
+import { Responsibility, ResponsibilityComplex } from './resp';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FiredataService {
 
-  private notesCollection: AngularFirestoreCollection<Note>;
-  private postsCollection: AngularFirestoreCollection<Note>;
-  private respCollection: AngularFirestoreCollection<Note>;
-  public notes: Observable<NoteComplex[]>;
-  public posts: Observable<NoteComplex[]>;
-  public resp: Observable<NoteComplex[]>;
+  private postsCollection: AngularFirestoreCollection<Post>;
+  private regionsCollection: AngularFirestoreCollection<Region>;
+  private respCollection: AngularFirestoreCollection<Responsibility>;
+  private statusesCollection: AngularFirestoreCollection<Status>;
+  public posts: Observable<PostComplex[]>;
+  public regions: Observable<RegionComplex[]>;
+  public resp: Observable<ResponsibilityComplex[]>;
+  public statuses: Observable<StatusComplex[]>;
+
 
   constructor( private afs: AngularFirestore ) {
-    this.notesCollection = this.afs.collection('notes', ref => ref.orderBy('updatedAt', 'desc'));
     this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
     this.respCollection = this.afs.collection('ent_responsibility', ref => ref);
-    this.notes = this.getItemsWithIDs$(this.notesCollection);
+    this.statusesCollection = this.afs.collection('ent_statuses', ref => ref);
+    this.regionsCollection = this.afs.collection('ent_region', ref => ref);
+
     this.posts = this.getItemsWithIDs$(this.postsCollection);
+    this.regions = this.getItemsWithIDs$(this.regionsCollection);
     this.resp = this.getItemsWithIDs$(this.respCollection);
+    this.statuses = this.getItemsWithIDs$(this.statusesCollection);
   }
 
   // CRUD
@@ -41,26 +49,66 @@ export class FiredataService {
       }));
   }
 
+  public getStatus(id: string) {
+    const docRef = this.statusesCollection.doc(id);
+    docRef.get()
+      .subscribe(st => console.log(st.data().title));
+  }
+
+  public getRegion(id: string) {
+    const docRef = this.regionsCollection.doc(id);
+    docRef.get()
+      .subscribe(reg => console.log(reg.data().title));
+  }
+
   private getItems$<T>(ref: AngularFirestoreCollection<DocumentData>, queryFn?): Observable<any> {
     return ref.valueChanges();
   }
 
-  public create$<T>(item: any, ref: AngularFirestoreCollection<DocumentData>): Promise<any> {
-    return ref.add(item)
+  private create$<T>(itemData: any, ref: AngularFirestoreCollection<DocumentData>): Promise<any> {
+    return ref.add(itemData)
       .then(() => { console.log(':: item created') })
       .catch(err => { console.log(':: item remove error', err) });
   }
 
-  public delete$<T>(itemId: string, ref: AngularFirestoreCollection<DocumentData>): Promise<any> {
+  private delete$<T>(itemId: string, ref: AngularFirestoreCollection<DocumentData>): Promise<any> {
     return ref.doc(itemId).delete()
       .then(() => console.log(':: item removed'))
       .catch(err => console.log(':: item remove error', err));
   }
 
-  public update$<T>(itemId: string, ref: AngularFirestoreCollection<DocumentData>, data: any): Promise<any> {
+  private update$<T>(itemId: string, ref: AngularFirestoreCollection<DocumentData>, data: any): Promise<any> {
     return ref.doc(itemId).update(data)
       .then(() => console.log(':: item updated'))
       .catch(err => console.log(':: item update error', err));
+  }
+
+  // POSTS
+
+  public postDelete$<T>(itemId:string): Promise<any> {
+    return this.delete$(itemId, this.postsCollection);
+  }
+
+  public postUpdate$<T>(itemId:string, data: any): Promise<any> {
+    return this.update$(itemId, this.postsCollection, data);
+  }
+
+  public postCreate$<T>(itemData:Post): Promise<any> {
+    return this.create$(itemData, this.postsCollection);
+  }
+
+  // STATUSES
+
+  public statusDelete$<T>(itemId:string): Promise<any> {
+    return this.delete$(itemId, this.statusesCollection);
+  }
+
+  public statusUpdate$<T>(itemId:string, data: any): Promise<any> {
+    return this.update$(itemId, this.statusesCollection, data);
+  }
+
+  public statusCreate$<T>(itemData:Post): Promise<any> {
+    return this.create$(itemData, this.statusesCollection);
   }
 
 }
