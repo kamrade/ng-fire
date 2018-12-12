@@ -33,7 +33,6 @@ export class PostsService {
           return resolveData;
         });
       }));
-    // this.postsWithIds.subscribe(item => console.log(item));
   }
 
   getPosts() {
