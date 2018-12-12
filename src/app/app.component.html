@@ -1,7 +1,11 @@
 <div class="app">
 
-  <div *ngIf="signed" class="main-navigation-wrapper mb-5">
-    <app-main-navigation></app-main-navigation>
+  <div *ngIf="signed" class="header">
+    <div class="container">
+      <div class="header-content">
+        <app-main-navigation></app-main-navigation>
+      </div>
+    </div>
   </div>
 
   <div class="base-router-outlet-wrapper">

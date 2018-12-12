@@ -1,0 +1,19 @@
+.entity-card {
+  padding: 20px;
+  background-color: $gray-100;
+  margin-bottom: 20px;
+  border-radius: $border-radius;
+
+  .entity-card-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+
+  .entity-card-description {
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-muted;
+  }
+}

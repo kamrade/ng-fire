@@ -1,8 +1,18 @@
 <div>
-  Entitie route: {{ currentRoute }}
-
-  <div *ngFor="let status of s.statuses | async">
-    <p><span class="mr-1">{{ status.title }}</span>{{ status.description}}</p>
+  <div *ngIf="currentRoute==='status'">
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let status of s.statuses | async">
+        <div class="entity-card">
+          <p class="entity-card-title">{{ status.title }}</p>
+          <p class="entity-card-description">{{ status.description}}</p>
+          <button class="btn btn-sm btn-secondary mr-1"><i-edit-2 class="icon-small"></i-edit-2>Edit status</button>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="entity-card">
+          <button class="btn btn-sm btn-primary">Add new</button>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>

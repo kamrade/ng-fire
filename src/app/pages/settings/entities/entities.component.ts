@@ -24,9 +24,9 @@ export class EntitiesComponent implements OnInit {
 
     // this.s.statuses.subscribe(i => console.log(i));
 
-    this.router.events.pipe(filter(value => value instanceof  NavigationEnd)).subscribe(value => {
+    // this.router.events.pipe(filter(value => value instanceof  NavigationEnd)).subscribe(value => {
       // console.log(':: after navigation end', value)
-    });
+    // });
   }
 
   ngOnInit() {

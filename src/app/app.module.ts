@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { SharedModule } from './shared/shared.module';
+
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -19,7 +21,7 @@ import { ModalComponent } from './core/modal.directive';
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { MainNavigationComponent } from './shared/main-navigation/main-navigation.component';
+
 import { IconsModule } from './icons/icons.module';
 import { SinglePostComponent } from './pages/public/single-post/single-post.component';
 import { EntitiesComponent } from './pages/settings/entities/entities.component';
@@ -37,7 +39,6 @@ import { EntitiesComponent } from './pages/settings/entities/entities.component'
     SigninPageComponent,
     SignupPageComponent,
     NotFoundComponent,
-    MainNavigationComponent,
     SinglePostComponent,
     EntitiesComponent
   ],
@@ -47,6 +48,7 @@ import { EntitiesComponent } from './pages/settings/entities/entities.component'
     CoreModule,
     AppRoutingModule,
     FormsModule,
+    SharedModule,
     IconsModule
   ],
   providers: [],

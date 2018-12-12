@@ -1,0 +1,14 @@
+@import "variables";
+
+.header {
+  background-color: $gray-800;
+  color: $white;
+  position: relative;
+  margin-bottom: 80px;
+
+  .header-content {
+    display: flex;
+    justify-content: flex-start;
+
+  }
+}

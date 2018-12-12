@@ -24,6 +24,15 @@ $green:   #2EC87E;
 $teal:    #20c997;
 $cyan:    #17a2b8;
 
+$primary:       $blue;
+$secondary:     $gray-300;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-800;
+
 $spacer: 1.25rem;
 $spacers: ();
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -49,8 +58,8 @@ $grid-gutter-width: 20px;
 
 $input-btn-focus-width: .1rem;
 
-$font-size-base: 0.875rem;
-$font-size-lg: 1rem;
-$font-size-sm: 0.75rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
 
 $paragraph-margin-bottom: 10px;

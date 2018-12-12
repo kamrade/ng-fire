@@ -14,7 +14,7 @@ export class PublicComponent implements OnInit {
   userID: string;
   userDisplayName: string;
 
-  constructor(public auth: AuthService, public posts: PostsService) { }
+  constructor(private auth: AuthService, private postsService: PostsService) {}
 
   ngOnInit() {
     const userObject: any = this.auth.user;
@@ -34,7 +34,7 @@ export class PublicComponent implements OnInit {
     const createdAt = Date.now();
     const updatedAt = Date.now();
 
-    this.posts.createPost({
+    this.postsService.createPost({
       ownerID: this.userID,
       ownerDisplayName: this.userDisplayName,
       createdAt,
