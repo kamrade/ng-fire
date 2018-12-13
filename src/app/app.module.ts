@@ -21,6 +21,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IconsModule } from './icons/icons.module';
 import { SinglePostComponent } from './pages/public/single-post/single-post.component';
 import { EntitiesComponent } from './pages/settings/entities/entities.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+import { NewReportFormComponent } from './pages/reports/new-report-form/new-report-form.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { EntitiesComponent } from './pages/settings/entities/entities.component'
     SignupPageComponent,
     NotFoundComponent,
     SinglePostComponent,
-    EntitiesComponent
+    EntitiesComponent,
+    ReportsComponent,
+    NewReportFormComponent
   ],
   imports: [
     BrowserModule,

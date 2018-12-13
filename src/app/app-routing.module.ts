@@ -12,6 +12,7 @@ import { SigninPageComponent } from './pages/auth/signin-page/signin-page.compon
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EntitiesComponent } from './pages/settings/entities/entities.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 const routes: Routes = [{
   path: '',
@@ -54,6 +55,9 @@ const routes: Routes = [{
 }, {
   path: 'public',
   component: PublicComponent
+}, {
+  path: 'reports',
+  component: ReportsComponent
 }, {
   path: '**',
   component: NotFoundComponent

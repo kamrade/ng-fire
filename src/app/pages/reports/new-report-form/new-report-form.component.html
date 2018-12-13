@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="new-report-form">
+      <h4 class="mb-4">Создать отчет по продажам</h4>
+
+      <form #f="ngForm" (submit)="confirmForm($event, f)">
+
+        <label class="form-label mb-2">
+          <span>Статус</span>
+          <select name="status" ngModel required #status="ngModel" type="text" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let opt of firedataService.statuses | async" [value]="opt.id">
+              {{ opt.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Регион</span>
+          <select name="region" ngModel required #region="ngModel" type="text" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let reg of firedataService.regions | async" [value]="reg.id">
+              {{ reg.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <div class="text-right pt-2">
+          <button (click)="resetForm(f)" type="reset" class="btn btn-secondary align-top">Reset data</button>{{' '}}
+          <button type="submit" class="btn btn-primary align-top">Add new post</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
