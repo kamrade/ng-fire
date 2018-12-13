@@ -17,6 +17,9 @@
   &.btn-sm {
     line-height: 15px;
   }
+  &.btn-lg {
+    line-height: 32px;
+  }
 }
 
 .form-control {
@@ -29,6 +32,10 @@
   &-sm {
     line-height: 15px;
     height: 30px;
+  }
+  &-lg {
+    line-height: 26px;
+    height: 50px;
   }
 
   &:focus {

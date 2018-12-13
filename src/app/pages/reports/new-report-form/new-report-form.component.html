@@ -7,7 +7,7 @@
 
         <label class="form-label mb-2">
           <span>Статус</span>
-          <select name="status" ngModel required #status="ngModel" type="text" class="form-control">
+          <select name="status" ngModel required #status="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
             <option *ngFor="let opt of firedataService.statuses | async" [value]="opt.id">
               {{ opt.data.title }}
@@ -20,16 +20,16 @@
           <input
             name="manager"
             type="text"
-            [value]="currentUserDisplayName"
+            [ngModel]="currentUserDisplayName"
             required
             readonly
             ngModel #manager="ngModel"
-            class="form-control">
+            class="form-control form-control-lg">
         </label>
 
         <label class="form-label mb-3">
           <span>Регион</span>
-          <select name="region" ngModel required #region="ngModel" type="text" class="form-control">
+          <select name="region" ngModel required #region="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
             <option *ngFor="let reg of firedataService.regions | async" [value]="reg.id">
               {{ reg.data.title }}
@@ -37,9 +37,29 @@
           </select>
         </label>
 
+        <label class="form-label mb-3">
+          <span>Направление</span>
+          <select name="direction" ngModel required #direction="ngModel" type="text" class="form-control form-control-lg">
+            <option value=""></option>
+            <option *ngFor="let direction of firedataService.directions | async" [value]="direction.id">
+              {{ direction.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Ответственность</span>
+          <select name="responsibility" ngModel required #responsibility="ngModel" type="text" class="form-control form-control-lg">
+            <option value=""></option>
+            <option *ngFor="let responsibility of firedataService.resp | async" [value]="responsibility.id">
+              {{ responsibility.data.title }}
+            </option>
+          </select>
+        </label>
+
         <div class="text-right pt-2">
-          <button (click)="resetForm(f)" type="reset" class="btn btn-secondary align-top">Reset data</button>{{' '}}
-          <button type="submit" class="btn btn-primary align-top">Add new post</button>
+          <button (click)="resetForm(f)" type="button" class="btn btn-lg btn-secondary align-top">Reset data</button>{{' '}}
+          <button type="submit" class="btn btn-lg btn-primary align-top">Add new post</button>
         </div>
 
       </form>

@@ -21,7 +21,7 @@ export class NewReportFormComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.setManager()
+    this.setManager();
   }
 
   setManager() {
@@ -32,7 +32,7 @@ export class NewReportFormComponent implements OnInit {
   }
 
   resetForm(f) {
-    f.reset();
+    f.resetForm({ manager: this.currentUserDisplayName });
     // Здесь нужно установить еще менеджера сразу.
   }
 
@@ -47,7 +47,7 @@ export class NewReportFormComponent implements OnInit {
       this.firedataService.getRegion(f.value.region);
     }
 
-    f.reset();
+    this.resetForm(f);
   }
 
 }
