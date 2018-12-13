@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FiredataService } from 'src/app/core/firedata.service';
 import { AuthService } from 'src/app/core/auth.service';
-import { StatusComplex } from 'src/app/core/status';
+import { EntityComplex } from 'src/app/core/entities/entity';
 import { User } from 'src/app/core/user';
 
 @Component({
@@ -14,13 +14,17 @@ export class NewReportFormComponent implements OnInit {
 
   currentUser: User;
   currentUserDisplayName: string;
-  statuses: StatusComplex[];
+  statuses: EntityComplex[];
 
   constructor(
     private firedataService: FiredataService,
     private auth: AuthService) { }
 
   ngOnInit() {
+    this.setManager()
+  }
+
+  setManager() {
     this.auth.user.subscribe(user => {
       this.currentUser = user;
       this.currentUserDisplayName = this.currentUser.displayName;
@@ -29,6 +33,7 @@ export class NewReportFormComponent implements OnInit {
 
   resetForm(f) {
     f.reset();
+    // Здесь нужно установить еще менеджера сразу.
   }
 
   confirmForm(e, f) {

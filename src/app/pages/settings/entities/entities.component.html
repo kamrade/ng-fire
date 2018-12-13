@@ -1,12 +1,12 @@
 <div>
-  <div *ngIf="currentRoute==='status'">
+  <div>
     <div class="row">
-      <div class="col-md-6 col-lg-4" *ngFor="let status of firedataService.statuses | async">
+      <div class="col-md-6 col-lg-4" *ngFor="let data of data$ | async">
 
         <app-entity-card
           (onChange)="updateEntity($event)"
           (onDelete)="deleteEntity($event)"
-          [data]="status"></app-entity-card>
+          [data]="data"></app-entity-card>
 
       </div>
       <div class="col-md-6 col-lg-4">

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { FiredataService } from 'src/app/core/firedata.service';
+
+import { EntityComplex } from 'src/app/core/entities/entity';
 
 @Component({
   selector: 'app-entities',
@@ -11,6 +14,7 @@ import { FiredataService } from 'src/app/core/firedata.service';
 export class EntitiesComponent implements OnInit {
 
   currentRoute = '';
+  data$: Observable<EntityComplex[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,25 +22,46 @@ export class EntitiesComponent implements OnInit {
 
     this.route.url.subscribe(value => {
       this.currentRoute = value[0].path;
+      this.data$ = this.getEntities(this.currentRoute);
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  getEntities(value): Observable<EntityComplex[]> {
+    switch(value) {
+      case 'status':
+        return this.firedataService.statuses;
+      case 'region':
+        return this.firedataService.regions;
+      case 'direction':
+        return this.firedataService.directions;
+      case 'responsibility':
+        return this.firedataService.resp;
+      case 'facility':
+        return this.firedataService.facilities;
+      case 'equipment':
+        return this.firedataService.equipments;
+      default:
+        return null;
+    }
   }
 
   createEntity(data) {
-    this.firedataService.statusCreate$({
+    console.log(`:: creating ${this.currentRoute}...`)
+    this.firedataService.create$({
       ...data.value
-    });
+    }, this.currentRoute);
   }
 
   deleteEntity(id) {
-    console.log(":: removing entity...");
-    this.firedataService.statusDelete$(id);
+    console.log(`:: removing ${this.currentRoute}...`);
+    this.firedataService.delete$(id, this.currentRoute);
   }
 
   updateEntity(entity) {
-    this.firedataService.statusUpdate$(entity.id, entity.data);
+    console.log(`:: updating ${this.currentRoute}...`);
+    this.firedataService.update$(entity.id, this.currentRoute, entity.data);
   }
 
 }
