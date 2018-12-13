@@ -16,6 +16,18 @@
         </label>
 
         <label class="form-label mb-3">
+          <span>Руководитель проекта</span>
+          <input
+            name="manager"
+            type="text"
+            [value]="currentUserDisplayName"
+            required
+            readonly
+            ngModel #manager="ngModel"
+            class="form-control">
+        </label>
+
+        <label class="form-label mb-3">
           <span>Регион</span>
           <select name="region" ngModel required #region="ngModel" type="text" class="form-control">
             <option value=""></option>

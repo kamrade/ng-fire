@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
-import { FiredataService } from '../../../core/firedata.service';
+import { FiredataService } from 'src/app/core/firedata.service';
 
 @Component({
   selector: 'app-entities',
@@ -15,21 +14,11 @@ export class EntitiesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private firedataService: FiredataService) {
 
     this.route.url.subscribe(value => {
       this.currentRoute = value[0].path;
-      // if (this.currentRoute !== 'status' && this.currentRoute !== 'region') {
-      //   this.router.navigate(['/profile']);
-      // }
     });
-
-    // this.s.statuses.subscribe(i => console.log(i));
-
-    // this.router.events.pipe(filter(value => value instanceof  NavigationEnd)).subscribe(value => {
-      // console.log(':: after navigation end', value)
-    // });
   }
 
   ngOnInit() {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentData } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Post, PostComplex } from './post';
-import { Region, RegionComplex } from './region';
-import { Status, StatusComplex } from './status';
-import { Responsibility, ResponsibilityComplex } from './resp';
+import { Region, RegionComplex } from './entities/region';
+import { Status, StatusComplex } from './entities/status';
+import { Responsibility, ResponsibilityComplex } from './entities/resp';
 
 @Injectable({
   providedIn: 'root'

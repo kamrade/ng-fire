@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col-md-6 col-lg-4" *ngFor="let status of firedataService.statuses | async">
 
-        <app-entity-card (onChange)="updateEntity($event)" (onDelete)="deleteEntity($event)" [data]="status"></app-entity-card>
+        <app-entity-card
+          (onChange)="updateEntity($event)"
+          (onDelete)="deleteEntity($event)"
+          [data]="status"></app-entity-card>
 
       </div>
       <div class="col-md-6 col-lg-4">
