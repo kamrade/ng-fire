@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/core/modal.service';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private modalService: ModalService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {}
@@ -22,4 +22,5 @@ export class DashboardComponent implements OnInit {
   closeModal(id: string) {
     this.modalService.close(id);
   }
+
 }

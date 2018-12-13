@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="currentRoute !== 'clients'">
+  <div *ngIf="currentRoute !== 'clients' && currentRoute !== 'users'">
     <div class="row">
       <div class="col-md-6 col-lg-4" *ngFor="let data of data$ | async">
 
@@ -27,6 +27,12 @@
       <app-client-form (hideForm)="hideClientForm()"></app-client-form>
     </div>
 
+  </div>
+
+  <div *ngIf="currentRoute === 'users'">
+    <div *ngFor="let user of authService.users$ | async">
+      <app-user-details [user]="user"></app-user-details>
+    </div>
   </div>
 
 </div>

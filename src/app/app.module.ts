@@ -24,6 +24,7 @@ import { EntitiesComponent } from './pages/settings/entities/entities.component'
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NewReportFormComponent } from './pages/reports/new-report-form/new-report-form.component';
 import { ClientFormComponent } from './pages/settings/entities/client-form/client-form.component';
+import { UserDetailsComponent } from './pages/settings/entities/user-details/user-details.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ClientFormComponent } from './pages/settings/entities/client-form/clien
     EntitiesComponent,
     ReportsComponent,
     NewReportFormComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

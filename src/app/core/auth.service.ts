@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -23,6 +23,9 @@ export class AuthService {
 
   user: Observable<User>;
 
+  private usersCollection: AngularFirestoreCollection<any>;
+  public  users$: Observable<any[]>;
+
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
@@ -37,6 +40,13 @@ export class AuthService {
           return of(null);
         }
       }));
+
+    this.usersCollection = this.afs.collection('users');
+    this.users$ = this.getUsers$(this.usersCollection);
+  }
+
+  public getUsers$(ref: AngularFirestoreCollection<any>): Observable<any> {
+    return ref.valueChanges();
   }
 
   emailSignUp(credentials: EmailPasswordCredentials): any {
@@ -89,6 +99,7 @@ export class AuthService {
       })
   }
 
+  // add user to firestore database
   private updateUserData(user): any {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
@@ -118,16 +129,19 @@ export class AuthService {
       });
   }
 
+  // unuse
   canRead(user: User): boolean {
     const allowed = ['admin', 'editor', 'subscriber'];
     return this.checkAuthorization(user, allowed);
   }
 
+  // unuse
   canEdit(user: User): boolean {
     const allowed = ['admin', 'editor'];
     return this.checkAuthorization(user, allowed);
   }
 
+  // unuse
   canDelete(user: User): boolean {
     const allowed = ['admin'];
     return this.checkAuthorization(user, allowed);

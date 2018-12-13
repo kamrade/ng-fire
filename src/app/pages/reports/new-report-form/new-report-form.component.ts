@@ -24,7 +24,6 @@ export class NewReportFormComponent implements OnInit {
 
   ngOnInit() {
     this.setManager();
-    console.log(this.currentYear);
   }
 
   setManager() {

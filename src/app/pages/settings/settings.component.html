@@ -11,6 +11,7 @@
         <li><a class="link" routerLinkActive="active-link" routerLink="/setting/equipment">Equipment type</a></li>
         <hr/>
         <li><a class="link" routerLinkActive="active-link" routerLink="/setting/clients">Client</a></li>
+        <li *ngIf="isAdmin"><a class="link" routerLinkActive="active-link" routerLink="/setting/users">Users</a></li>
       </ul>
     </div>
 

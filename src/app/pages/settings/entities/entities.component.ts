@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { FiredataService } from 'src/app/core/firedata.service';
 import { ClientsService } from 'src/app/core/clients.service';
+import { AuthService } from 'src/app/core/auth.service';
 
 import { EntityComplex } from 'src/app/core/entities/entity';
 
@@ -19,6 +20,7 @@ export class EntitiesComponent implements OnInit {
   data$: Observable<EntityComplex[]>;
 
   constructor(
+    private authService: AuthService,
     private route: ActivatedRoute,
     private firedataService: FiredataService) {
       this.route.url.subscribe(value => {
@@ -28,7 +30,7 @@ export class EntitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.clientsService.clients$.subscribe(client => console.log(client));
+    // console.log(this.authService.users$.subscribe(users => console.log(users)));
   }
 
   getEntities(value): Observable<EntityComplex[]> {
