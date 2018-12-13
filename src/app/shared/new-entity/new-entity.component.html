@@ -1,7 +1,7 @@
 <div [ngClass]="{'entity-card': true, 'entity-card-outline': mode === 'creation'}">
 
   <div *ngIf="mode === 'simple'">
-    <button (click)="creationMode()" class="btn btn-sm btn-primary">Add new</button>
+    <button (click)="creationMode()" class="btn btn-lg btn-block btn-primary">Add new</button>
   </div>
 
   <div *ngIf="mode === 'creation'">

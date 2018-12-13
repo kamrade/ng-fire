@@ -6,10 +6,13 @@
 
     <p class="entity-card-title">{{ formData.data.title }}</p>
     <p class="entity-card-abbr">{{ formData.data.abbr }}</p>
-    <p class="entity-card-description">{{ formData.data.description}}</p>
 
-    <button (click)="editMode()" class="btn btn-sm btn-secondary mr-1"><i-edit-2 class="icon-small"></i-edit-2>Edit</button>
-    <button (click)="delete(data.id)" class="btn btn-sm btn-light text-danger mr-1"><i-trash-2 class="icon-small"></i-trash-2>Remove</button>
+    <button (click)="editMode()" class="btn btn-light mr-1 p-1 text-muted">
+      <i-edit-2></i-edit-2>
+    </button>
+    <button (click)="delete(data.id)" class="btn btn-light mr-1 p-1 text-muted">
+      <i-trash-2></i-trash-2>
+    </button>
 
   </div>
 
