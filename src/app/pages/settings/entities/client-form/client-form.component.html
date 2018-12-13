@@ -1,0 +1,72 @@
+<div>
+  <h3 class="mb-5">Create client</h3>
+
+  <form class="pb-5" #f="ngForm" (submit)="create(f)">
+
+    <h5 class="mb-3">Main</h5>
+    <label class="form-label">
+      <span>Title</span>
+      <input name="title" ngModel required #title="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+
+    <label class="form-label">
+      <span>Description</span>
+      <textarea name="description" ngModel #description="ngModel" class="form-control form-control-lg textarea-sm mb-2" rows="5"></textarea>
+    </label>
+
+    <h5 class="mb-3 pt-5">Contacts</h5>
+    <label class="form-label">
+      <span>Contact</span>
+      <input name="contact" ngModel required #contact="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Contact name</span>
+      <input name="contactPerson" ngModel required #contactPerson="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+
+
+    <h5 class="mb-3 pt-5">Address</h5>
+    <label class="form-label">
+      <span>Zip code</span>
+      <input name="zipCode" ngModel required #zipCode="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Country</span>
+      <input name="country" ngModel required #country="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>District</span>
+      <input name="district" ngModel required #district="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>City</span>
+      <input name="city" ngModel required #city="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Street</span>
+      <input name="street" ngModel required #street="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Building</span>
+      <input name="building" ngModel required #building="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Office</span>
+      <input name="office" ngModel required #office="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+
+    <h5 class="mb-3 pt-5">Notes</h5>
+    <label class="form-label">
+      <span>Note title</span>
+      <input name="noteTitle" ngModel required #noteTitle="ngModel" type="text" class="form-control form-control-lg mb-2"/>
+    </label>
+    <label class="form-label">
+      <span>Note content</span>
+      <textarea name="noteContent" ngModel #noteContent="ngModel" class="form-control form-control-lg textarea-sm mb-2" rows="5"></textarea>
+    </label>
+
+    <button (click)="cancel()" title="create new entity" type="button" class="btn btn-lg btn-secondary">Cancel</button>{{' '}}
+    <button title="create new entity" type="submit" class="btn btn-lg btn-primary">Create</button>
+  </form>
+
+</div>

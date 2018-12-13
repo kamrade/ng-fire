@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
 import { FiredataService } from './firedata.service';
 import { ModalService } from './modal.service';
+import { ClientsService } from './clients.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { ModalService } from './modal.service';
     RouterModule.forRoot([])
   ],
   exports: [],
-  providers: [AuthService, ModalService, FiredataService],
+  providers: [AuthService, ModalService, FiredataService, ClientsService],
   declarations: []
 })
 export class CoreModule { }

@@ -23,6 +23,7 @@ import { SinglePostComponent } from './pages/public/single-post/single-post.comp
 import { EntitiesComponent } from './pages/settings/entities/entities.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NewReportFormComponent } from './pages/reports/new-report-form/new-report-form.component';
+import { ClientFormComponent } from './pages/settings/entities/client-form/client-form.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NewReportFormComponent } from './pages/reports/new-report-form/new-repo
     SinglePostComponent,
     EntitiesComponent,
     ReportsComponent,
-    NewReportFormComponent
+    NewReportFormComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <div *ngIf="currentRoute !== 'clients'">
     <div class="row">
       <div class="col-md-6 col-lg-4" *ngFor="let data of data$ | async">
 
@@ -16,4 +16,17 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="currentRoute === 'clients'">
+
+    <div *ngIf="!clientFormShow">
+      <button (click)="showClientForm()" class="btn btn-lg btn-primary">Добавить клиента</button>
+    </div>
+
+    <div *ngIf="clientFormShow">
+      <app-client-form (hideForm)="hideClientForm()"></app-client-form>
+    </div>
+
+  </div>
+
 </div>

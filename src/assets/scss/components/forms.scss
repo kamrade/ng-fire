@@ -1,3 +1,16 @@
+input.form-control {
+
+  &:read-only {
+    background-color: $gray-200;
+    opacity: .5;
+  }
+
+  &:focus {
+    border-color: $gray-300;
+  }
+
+}
+
 .form-label {
   display: block;
   line-height: 20px;

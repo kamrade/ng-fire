@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="new-report-form">
-      <h4 class="mb-4">Создать отчет по продажам</h4>
+      <h3 class="mb-5">Создать отчет по продажам</h3>
 
       <form #f="ngForm" (submit)="confirmForm($event, f)">
 
@@ -55,6 +55,11 @@
               {{ responsibility.data.title }}
             </option>
           </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Год</span>
+          <input [ngModel]="currentYear" name="year" ngModel required #year="ngModel" type="text" class="form-control form-control-lg">
         </label>
 
         <div class="text-right pt-2">

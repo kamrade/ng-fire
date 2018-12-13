@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { FiredataService } from 'src/app/core/firedata.service';
+import { ClientsService } from 'src/app/core/clients.service';
 
 import { EntityComplex } from 'src/app/core/entities/entity';
 
@@ -13,20 +14,22 @@ import { EntityComplex } from 'src/app/core/entities/entity';
 })
 export class EntitiesComponent implements OnInit {
 
+  clientFormShow = false;
   currentRoute = '';
   data$: Observable<EntityComplex[]>;
 
   constructor(
     private route: ActivatedRoute,
     private firedataService: FiredataService) {
-
-    this.route.url.subscribe(value => {
-      this.currentRoute = value[0].path;
-      this.data$ = this.getEntities(this.currentRoute);
-    });
+      this.route.url.subscribe(value => {
+        this.currentRoute = value[0].path;
+        this.data$ = this.getEntities(this.currentRoute);
+      });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.clientsService.clients$.subscribe(client => console.log(client));
+  }
 
   getEntities(value): Observable<EntityComplex[]> {
     switch(value) {
@@ -62,6 +65,14 @@ export class EntitiesComponent implements OnInit {
   updateEntity(entity) {
     console.log(`:: updating ${this.currentRoute}...`);
     this.firedataService.update$(entity.id, this.currentRoute, entity.data);
+  }
+
+  showClientForm() {
+    this.clientFormShow = true;
+  }
+
+  hideClientForm() {
+    this.clientFormShow = false;
   }
 
 }

@@ -5,9 +5,6 @@ import { map } from 'rxjs/operators';
 
 import { Entity, EntityComplex } from './entities/entity';
 import { Post, PostComplex } from './post';
-// import { Status, StatusComplex } from './entities/status';
-// import { Region, RegionComplex } from './entities/region';
-// import { Responsibility, ResponsibilityComplex } from './entities/resp';
 
 @Injectable({
   providedIn: 'root'

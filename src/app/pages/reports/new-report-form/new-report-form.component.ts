@@ -16,12 +16,15 @@ export class NewReportFormComponent implements OnInit {
   currentUserDisplayName: string;
   statuses: EntityComplex[];
 
+  currentYear = new Date().getFullYear();
+
   constructor(
     private firedataService: FiredataService,
     private auth: AuthService) { }
 
   ngOnInit() {
     this.setManager();
+    console.log(this.currentYear);
   }
 
   setManager() {
@@ -32,7 +35,7 @@ export class NewReportFormComponent implements OnInit {
   }
 
   resetForm(f) {
-    f.resetForm({ manager: this.currentUserDisplayName });
+    f.resetForm({ manager: this.currentUserDisplayName, year: this.currentYear });
     // Здесь нужно установить еще менеджера сразу.
   }
 
