@@ -1,31 +1,25 @@
 <div class="card-user-details">
   <h4 class="card-user-details--title">{{user.displayName}}</h4>
-  <div class="row">
+  <div class="d-flex">
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <div class="role-container">
+    <div class="mr-2">
+      <div [ngClass]="{'role-container': true, 'disabled': !user?.roles.admin}">
         <div class="role-block role-title">admin:</div>
-        <div class="role-block role-switcher-wrapper">
-          <app-switcher [disabled]="true"  [initialCheck]="user?.roles.admin" (check)="subscriberChange($event)"></app-switcher>
-        </div>
+        <div class="role-block role-switcher-wrapper"><i-check></i-check></div>
       </div>
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <div class="role-container">
+    <div class="mr-2">
+      <div [ngClass]="{'role-container': true, 'disabled': !user?.roles.editor}">
         <div class="role-block role-title">editor:</div>
-        <div class="role-block role-switcher-wrapper">
-          <app-switcher [disabled]="true" [initialCheck]="user?.roles.editor" (check)="subscriberChange($event)"></app-switcher>
-        </div>
+        <div class="role-block role-switcher-wrapper"><i-check></i-check></div>
       </div>
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <div class="role-container">
+    <div class="mr-2">
+      <div [ngClass]="{'role-container': true, 'disabled': !user?.roles.subscriber}">
         <div class="role-block role-title">subscriber:</div>
-        <div class="role-block role-switcher-wrapper">
-          <app-switcher [disabled]="true"  [initialCheck]="user?.roles.subscriber" (check)="subscriberChange($event)"></app-switcher>
-        </div>
+        <div class="role-block role-switcher-wrapper"><i-check></i-check></div>
       </div>
     </div>
 

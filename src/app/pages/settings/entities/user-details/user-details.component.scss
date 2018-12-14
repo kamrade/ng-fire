@@ -5,9 +5,11 @@
   border-radius: $border-radius;
   padding: 10px;
   margin-bottom: 10px;
+  max-width: 400px;
 
   .card-user-details--title {
     font-size: 1rem;
+    font-weight: 600;
     line-height: 20px;
     margin-bottom: 10px;
   }
@@ -17,9 +19,14 @@
   display: flex;
   justify-content: flex-start;
 
+  &.disabled {
+    opacity: 0.2;
+  }
+
   .role-block {
     line-height: 20px;
     height: 20px;
+
   }
 
   .role-title {
