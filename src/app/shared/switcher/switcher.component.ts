@@ -14,8 +14,6 @@ export class SwitcherComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
-    console.log(this.isChecked);
-  }
+  onClick() {}
 
 }
