@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-switcher',
@@ -7,13 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SwitcherComponent implements OnInit {
 
-  public isChecked: false;
+  @Input() initialCheck: boolean;
+  @Input() disabled = false;
+
+  @Output() check = new EventEmitter<any>();
+
+  private isChecked: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.isChecked = this.initialCheck || false;
   }
 
-  onClick() {}
+  onChange() {
+    if (!this.disabled) {
+      this.check.emit(this.isChecked);
+    }
+  }
 
 }

@@ -20,7 +20,7 @@ export class EntitiesComponent implements OnInit {
   data$: Observable<EntityComplex[]>;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private firedataService: FiredataService) {
       this.route.url.subscribe(value => {

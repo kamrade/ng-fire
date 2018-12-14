@@ -15,4 +15,7 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  subscriberChange($event) {
+    console.log($event);
+  }
 }
