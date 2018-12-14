@@ -19,14 +19,10 @@ import { SignupPageComponent } from './pages/auth/signup-page/signup-page.compon
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { IconsModule } from './icons/icons.module';
-import { SinglePostComponent } from './pages/public/single-post/single-post.component';
-import { EntitiesComponent } from './pages/settings/entities/entities.component';
-import { ReportsComponent } from './pages/reports/reports.component';
-import { NewReportFormComponent } from './pages/reports/new-report-form/new-report-form.component';
-import { ClientFormComponent } from './pages/settings/entities/client-form/client-form.component';
-import { UserDetailsComponent } from './pages/settings/entities/user-details/user-details.component';
-import { ClientsListComponent } from './pages/settings/entities/clients-list/clients-list.component';
 
+import { ReportsComponent } from './pages/reports/reports.component';
+
+import { EntitiesComponent } from 'src/app/pages/settings/entities/entities.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +36,8 @@ import { ClientsListComponent } from './pages/settings/entities/clients-list/cli
     SigninPageComponent,
     SignupPageComponent,
     NotFoundComponent,
-    SinglePostComponent,
-    EntitiesComponent,
     ReportsComponent,
-    NewReportFormComponent,
-    ClientFormComponent,
-    UserDetailsComponent,
-    ClientsListComponent
+    EntitiesComponent
   ],
   imports: [
     BrowserModule,

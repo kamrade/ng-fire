@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { FiredataService } from '../../../core/firedata.service';
-import { Post, PostComplex } from '../../../core/post';
+import { FiredataService } from 'src/app/core/firedata.service';
+import { Post, PostComplex } from 'src/app/core/post';
 
 @Component({
   selector: 'app-single-post',
