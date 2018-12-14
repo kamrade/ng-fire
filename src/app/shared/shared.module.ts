@@ -7,6 +7,7 @@ import { IconsModule } from '../icons/icons.module';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { NewEntityComponent } from './new-entity/new-entity.component';
 import { EntityCardComponent } from './entity-card/entity-card.component';
+import { SwitcherComponent } from './switcher/switcher.component';
 
 @NgModule({
   imports: [
@@ -18,13 +19,15 @@ import { EntityCardComponent } from './entity-card/entity-card.component';
   declarations: [
     MainNavigationComponent,
     NewEntityComponent,
-    EntityCardComponent
+    EntityCardComponent,
+    SwitcherComponent
   ],
   exports: [
     MainNavigationComponent,
     NewEntityComponent,
     EntityCardComponent,
-    FormsModule
+    FormsModule,
+    SwitcherComponent
   ]
 })
 export class SharedModule { }
