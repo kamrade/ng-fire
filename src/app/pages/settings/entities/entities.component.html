@@ -20,12 +20,16 @@
 
   <div *ngIf="currentRoute === 'clients'">
 
-    <div *ngIf="!clientFormShow">
+    <div *ngIf="!clientFormShow" class="mb-5">
       <button (click)="showClientForm()" class="btn btn-lg btn-primary">Добавить клиента</button>
     </div>
 
-    <div *ngIf="clientFormShow">
+    <div *ngIf="clientFormShow" class="mb-5">
       <app-client-form (hideForm)="hideClientForm()"></app-client-form>
+    </div>
+
+    <div class="clients-list">
+      <app-clients-list></app-clients-list>
     </div>
 
   </div>

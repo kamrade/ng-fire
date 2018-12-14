@@ -25,6 +25,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
 import { NewReportFormComponent } from './pages/reports/new-report-form/new-report-form.component';
 import { ClientFormComponent } from './pages/settings/entities/client-form/client-form.component';
 import { UserDetailsComponent } from './pages/settings/entities/user-details/user-details.component';
+import { ClientsListComponent } from './pages/settings/entities/clients-list/clients-list.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UserDetailsComponent } from './pages/settings/entities/user-details/use
     ReportsComponent,
     NewReportFormComponent,
     ClientFormComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ClientsListComponent
   ],
   imports: [
     BrowserModule,
