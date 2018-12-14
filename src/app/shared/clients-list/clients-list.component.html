@@ -1,3 +1,9 @@
-<p>
-  clients-list works!
-</p>
+<div class="clients-list">
+  <h1 *ngIf="isLoading">Loading...</h1>
+  <div *ngFor="let client of clients" class="client-card">
+
+    <h3 class="client-title"> {{ client.data.title }} </h3>
+    <p class="client-description">{{ client.data.description }}</p>
+
+  </div>
+</div>
