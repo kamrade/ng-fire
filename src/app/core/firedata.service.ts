@@ -47,7 +47,6 @@ export class FiredataService {
   }
 
   // CRUD
-
   public getItemsWithIDs$<T>(ref: AngularFirestoreCollection<T>): Observable<any> {
     return ref.snapshotChanges()
       .pipe( map(actions => {
@@ -68,8 +67,8 @@ export class FiredataService {
   // сейчас тестово используются для создания отчета.
   public getStatus(id: string) {
     const docRef = this.statusesCollection.doc(id);
-    docRef.get()
-      .subscribe(st => console.log(st.data().title));
+    return docRef.get();
+      // .subscribe(st => console.log(st.data().title));
   }
 
   // сейчас тестово используются для создания отчета.

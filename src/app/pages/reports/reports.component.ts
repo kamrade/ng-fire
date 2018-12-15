@@ -24,9 +24,7 @@ export class ReportsComponent implements OnInit {
   reports: ReportComplex[];
   reportsUp = [];
   isLoading = true;
-
   reportsInTable = reportsInTable;
-
   title1 = new Subject();
 
   constructor(
@@ -44,6 +42,12 @@ export class ReportsComponent implements OnInit {
 
           this.reports.forEach(report => {
             let client = new Subject;
+            let status = new Subject;
+
+            this.getStatus(report.data.status)
+              .subscribe(statusObject => {
+                status.next(statusObject.data().title);
+              });
 
             from(this.getClientById(report.data.client))
               .subscribe(clientObject => {
@@ -51,8 +55,9 @@ export class ReportsComponent implements OnInit {
               });
 
             this.reportsUp.push({
-              ...report,
-              client
+              ...report.data,
+              client,
+              status
             });
 
           });
@@ -77,8 +82,11 @@ export class ReportsComponent implements OnInit {
   }
 
   getClientById(id: string): Promise<any> {
-    let clientTitle: Client;
     return this.clientsService.getClientById(id);
+  }
+
+  getStatus(id: string): Observable<any> {
+    return this.firedataService.getStatus(id);
   }
 
   renderCell(report, th) {

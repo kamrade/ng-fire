@@ -10,7 +10,8 @@
     <div class="reports-up">
       <div *ngFor="let rep of reportsUp">
         <h5>{{rep.client | async}}</h5>
-        <p>{{rep.data.year}}</p>
+        <p>{{rep.status | async}}</p>
+        <p>{{rep.year}}</p>
       </div>
     </div>
 
