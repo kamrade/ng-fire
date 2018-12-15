@@ -62,9 +62,74 @@
           <input [ngModel]="currentYear" name="year" ngModel required #year="ngModel" type="text" class="form-control form-control-lg">
         </label>
 
+        <label class="form-label mb-3">
+          <span>Заказчик</span>
+          <select name="client" ngModel required #client="ngModel" type="text" class="form-control form-control-lg">
+            <option value=""></option>
+            <option *ngFor="let client of clientsService.clients$ | async" [value]="client.id">
+              {{ client.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Объект</span>
+          <select name="facility" ngModel required #facility="ngModel" type="text" class="form-control form-control-lg">
+            <option value=""></option>
+            <option *ngFor="let f of firedataService.facilities | async" [value]="f.id">
+              {{ f.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Оборудование</span>
+          <select name="equipment" ngModel required #equipment="ngModel" type="text" class="form-control form-control-lg">
+            <option value=""></option>
+            <option *ngFor="let e of firedataService.equipments | async" [value]="e.id">
+              {{ e.data.title }}
+            </option>
+          </select>
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Контракт</span>
+          <input name="contractPrice" ngModel required #contractPrice="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Себестоимость</span>
+          <input name="netPrice" ngModel required #netPrice="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>GP</span>
+          <input name="gp" ngModel required #gp="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>GP %</span>
+          <input name="gpPercents" ngModel required #gpPercents="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>НДС</span>
+          <input name="vat" ngModel required #vat="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Срок выполнения проекта</span>
+          <input name="periodOfExecution" ngModel required #periodOfExecution="ngModel" type="text" class="form-control form-control-lg">
+        </label>
+
+        <label class="form-label mb-3">
+          <span>Комментарии</span>
+          <textarea name="comments" ngModel required #comments="ngModel" type="text" class="form-control form-control-lg" rows="8"></textarea>
+        </label>
+
         <div class="text-right pt-2">
-          <button (click)="resetForm(f)" type="button" class="btn btn-lg btn-secondary align-top">Reset data</button>{{' '}}
-          <button type="submit" class="btn btn-lg btn-primary align-top">Add new post</button>
+          <button (click)="hideForm()" type="button" class="btn btn-lg btn-secondary align-top">Отмена</button>{{' '}}
+          <button type="submit" class="btn btn-lg btn-primary align-top">Создать отчет</button>
         </div>
 
       </form>

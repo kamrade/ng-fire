@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,6 +17,10 @@ export class ClientsService {
   constructor(private afs: AngularFirestore) {
     this.clientsCollection = this.afs.collection('client', ref => ref.orderBy('updatedAt', 'desc'));
     this.clients$ = this.getClientsWithIDs$(this.clientsCollection);
+  }
+
+  public getClientById(id: string): Promise<any> {
+    return this.clientsCollection.doc(id).ref.get();
   }
 
   public async create$(clientData: Client): Promise<any> {

@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { FiredataService } from 'src/app/core/firedata.service';
 import { AuthService } from 'src/app/core/auth.service';
+import { ClientsService } from 'src/app/core/clients.service';
+import { ReportsService } from 'src/app/core/reports.service';
+
 import { EntityComplex } from 'src/app/core/entities/entity';
 import { User } from 'src/app/core/user';
+import { Report } from 'src/app/core/report';
 
 @Component({
   selector: 'app-new-report-form',
@@ -12,42 +16,47 @@ import { User } from 'src/app/core/user';
 })
 export class NewReportFormComponent implements OnInit {
 
+  @Output() cancel = new EventEmitter();
+
   currentUser: User;
+  currentUserId: string;
   currentUserDisplayName: string;
-  statuses: EntityComplex[];
 
   currentYear = new Date().getFullYear();
 
   constructor(
     private firedataService: FiredataService,
-    private auth: AuthService) { }
+    private auth: AuthService,
+    public clientsService: ClientsService,
+    private reportService: ReportsService) { }
 
   ngOnInit() {
-    this.setManager();
-  }
-
-  setManager() {
     this.auth.user.subscribe(user => {
       this.currentUser = user;
+      this.currentUserId = user.uid;
       this.currentUserDisplayName = this.currentUser.displayName;
     });
   }
 
+  hideForm() {
+    this.cancel.emit();
+  }
+
   resetForm(f) {
     f.resetForm({ manager: this.currentUserDisplayName, year: this.currentYear });
-    // Здесь нужно установить еще менеджера сразу.
   }
 
   confirmForm(e, f) {
     e.preventDefault();
 
-    if (f.value.status) {
-      this.firedataService.getStatus(f.value.status);
+    let reportData: Report = {
+      ...f.value,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      createdBy: this.currentUserId
     }
 
-    if (f.value.region) {
-      this.firedataService.getRegion(f.value.region);
-    }
+    this.reportService.create$(reportData);
 
     this.resetForm(f);
   }

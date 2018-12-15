@@ -1,7 +1,45 @@
 <div class="reports">
   <div class="container">
 
-    <app-new-report-form></app-new-report-form>
+    <h1 *ngIf="isLoading">Loading...</h1>
+
+    {{ title1 | async }} <br/>
+    {{ title2 | async }} <br/>
+    {{ title3 | async }} <br/>
+
+    <div class="reports-up">
+      <div *ngFor="let rep of reportsUp">
+        <h5>{{rep.client | async}}</h5>
+        <p>{{rep.data.year}}</p>
+      </div>
+    </div>
+
+    <div class="reports-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th *ngFor="let th of reportsInTable">{{th}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let report of reports">
+            <td *ngFor="let td of reportsInTable">
+              {{ renderCell(report.data, td) | async }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!isShowReportForm">
+      <div class="mb-5">
+        <button (click)="showReportForm()" type="button" class="btn btn-lg btn-primary">New report</button>
+      </div>
+    </div>
+
+    <div *ngIf="isShowReportForm">
+      <app-new-report-form (cancel)="hideReportForm()"></app-new-report-form>
+    </div>
 
   </div>
 </div>

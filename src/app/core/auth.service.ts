@@ -45,6 +45,10 @@ export class AuthService {
     this.users$ = this.getUsers$(this.usersCollection);
   }
 
+  public getUserById(id: string) {
+    return this.usersCollection.doc(id).ref.get();
+  }
+
   public getUsers$(ref: AngularFirestoreCollection<any>): Observable<any> {
     return ref.valueChanges();
   }
