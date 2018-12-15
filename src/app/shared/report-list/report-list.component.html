@@ -1,0 +1,32 @@
+<div class="report-list">
+  <h1 *ngIf="isLoading">Loading...</h1>
+
+  {{ title1 | async }} <br/>
+
+  <div class="reports-up">
+    <div *ngFor="let rep of reportsUp">
+      <span>{{rep.client | async}}</span>
+      <span>{{rep.status | async}}</span>
+      <span>{{rep.year}}</span>
+    </div>
+  </div>
+
+  <div class="reports-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let th of reportsInTable">{{th}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of reports">
+          <td *ngFor="let td of reportsInTable">
+            {{ renderCell(report.data, td) | async }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

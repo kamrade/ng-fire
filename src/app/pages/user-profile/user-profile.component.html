@@ -9,7 +9,7 @@
 <ng-template #authenticated>
   <div class="card-user-details" *ngIf="auth.user | async as user">
     <h3>{{ user.displayName }}</h3>
-    <p><i-user class="pr-1"></i-user>UID: {{ user.uid }}</p>
+    <p><i-user class="pr-1"></i-user>UID: {{ user.uid || '' }}</p>
     <hr />
     <p>Favorite color: {{ user?.favoriteColor }}</p>
     <hr />

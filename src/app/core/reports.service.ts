@@ -12,11 +12,11 @@ import { Report, ReportComplex } from './report';
 export class ReportsService {
 
   private reportsCollection: AngularFirestoreCollection<Report>;
-  public reports$: Observable<ReportComplex[]>;
+  // public reports$: Observable<ReportComplex[]>;
 
   constructor(private afs: AngularFirestore) {
     this.reportsCollection = this.afs.collection('reports', ref => ref.orderBy('updatedAt', 'desc'));
-    this.reports$ = this.getReportsWithIDs$(this.reportsCollection);
+    // this.reports$ = this.getReportsWithIDs$();
   }
 
   // CREATE REPORT
@@ -26,9 +26,26 @@ export class ReportsService {
       .catch(err => { console.log(':: error create report', err) });
   }
 
-  // GET REPORTS WITH ID
-  public getReportsWithIDs$<T>(ref: AngularFirestoreCollection<T>): Observable<any> {
-    return ref.snapshotChanges()
+  // GET REPORTS WHICH ARE BEEN CREATED BY CURRENT USER (FOR EDITOR PERMISSIONS)
+  public getReportsForCurrentUser$(userId: string): Observable<ReportComplex[]> {
+    return this.afs
+      .collection('reports', ref => ref.where('createdBy', '==', userId))
+      .snapshotChanges()
+      .pipe( map(actions => {
+        return actions.map(a => {
+          return {
+            data: a.payload.doc.data(),
+            id: a.payload.doc.id
+          }
+        })
+      })) as Observable<ReportComplex[]>;
+  }
+
+  // GET ALL REPORTS WITH IDS (ONLY FOR ADMIN PERMISSION)
+  public getReportsWithIDs$(): Observable<ReportComplex[]> {
+    return this.afs
+      .collection('reports', ref => ref)
+      .snapshotChanges()
       .pipe( map(actions => {
         return actions.map(a => {
           return {
@@ -36,6 +53,6 @@ export class ReportsService {
             id: a.payload.doc.id
           }
         });
-      }));
+      })) as Observable<ReportComplex[]>;
   }
 }

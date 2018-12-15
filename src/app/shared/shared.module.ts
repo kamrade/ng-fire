@@ -20,6 +20,8 @@ import { NewReportFormComponent } from './new-report-form/new-report-form.compon
 
 // POSTS
 import { SinglePostComponent } from './single-post/single-post.component';
+import { ReportListComponent } from './report-list/report-list.component';
+import { ReportsTableComponent } from './reports-table/reports-table.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { SinglePostComponent } from './single-post/single-post.component';
     UserDetailsComponent,
     ClientFormComponent,
     NewReportFormComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    ReportListComponent,
+    ReportsTableComponent
   ],
   exports: [
     MainNavigationComponent,
@@ -49,7 +53,9 @@ import { SinglePostComponent } from './single-post/single-post.component';
     UserDetailsComponent,
     ClientFormComponent,
     NewReportFormComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    ReportListComponent,
+    ReportsTableComponent
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Client, ClientComplex } from './client';
@@ -19,8 +19,10 @@ export class ClientsService {
     this.clients$ = this.getClientsWithIDs$(this.clientsCollection);
   }
 
-  public getClientById(id: string): Promise<any> {
-    return this.clientsCollection.doc(id).ref.get();
+  public getClientById(id: string): Observable<any> {
+    // return from(this.clientsCollection.doc(id).ref.get());
+    return this.clientsCollection.doc(id).valueChanges();
+
   }
 
   public async create$(clientData: Client): Promise<any> {
