@@ -10,7 +10,7 @@ import { ReportsService } from 'src/app/core/reports.service';
 
 import { Client, ClientComplex } from 'src/app/core/client';
 import { Entity, EntityComplex } from 'src/app/core/entities/entity';
-import { Report, ReportComplex, reportsInTable } from 'src/app/core/report';
+import { Report, ReportComplex, reportColumns } from 'src/app/core/report';
 
 @Component({
   selector: 'app-report-list',
@@ -23,7 +23,7 @@ export class ReportListComponent implements OnInit {
   reports: ReportComplex[];
   reportsUp = [];
   isLoading = true;
-  reportsInTable = reportsInTable;
+  reportColumns = reportColumns;
   title1 = new Subject();
 
   constructor(
@@ -32,7 +32,8 @@ export class ReportListComponent implements OnInit {
     private firedataService: FiredataService,
     private reportsService: ReportsService) {
 
-      this.reportsService.reports$.pipe( takeUntil(this.destroy$) )
+      this.reportsService.getReportsWithIDs$()
+        .pipe( takeUntil(this.destroy$) )
         .subscribe(reports => {
 
           console.log(':: get reports');
@@ -80,7 +81,7 @@ export class ReportListComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  getClientById(id: string): Promise<any> {
+  getClientById(id: string): Observable<any> {
     return this.clientsService.getClientById(id);
   }
 

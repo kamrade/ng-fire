@@ -4,15 +4,25 @@
   <p>{{ userName }}</p>
   <hr />
 
-  <div *ngFor="let report of reports">
+  <div class="table-wrapper">
+    <table class="table">
 
-    <div class="d-flex">
-      <div class="table-cell">
-        <!-- <div *ngFor="clients[report.data.client] | async">
+      <thead>
+        <tr>
+          <th *ngFor="let col of reportColumns">
+            <span> {{ col }} </span>
+          </th>
+        </tr>
+      </thead>
 
-        </div> -->
-      </div>
-    </div>
+      <tbody>
+        <tr *ngFor="let report of reports"  class="table-cell mb-1">
+          <td *ngFor="let col of reportColumns" class="table-cell mr-3">
+            <span>{{ renderCell(report.data, col) }}</span>
+          </td>
+        </tr>
+      </tbody>
 
+    </table>
   </div>
 </div>

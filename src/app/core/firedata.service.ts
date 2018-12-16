@@ -64,6 +64,32 @@ export class FiredataService {
     return ref.valueChanges();
   }
 
+  public getEntityById(entityType: string, entityId: string):Observable<Entity> {
+    let ref: AngularFirestoreCollection;
+    switch(entityType) {
+      case 'status':
+        ref = this.statusesCollection;
+        break;
+      case 'region':
+        ref = this.regionsCollection
+        break;
+      case 'direction':
+        ref = this.directionsCollection;
+        break;
+      case 'responsibility':
+        ref = this.respCollection;
+        break;
+      case 'facility':
+        ref = this.facilitiesCollection;
+        break;
+      case 'equipment':
+        ref = this.equipmentsCollection;
+        break;
+    }
+
+    return ref.doc(entityId).valueChanges() as Observable<Entity>;
+  }
+
   // сейчас тестово используются для создания отчета.
   public getStatus(id: string) {
     const docRef = this.statusesCollection.doc(id);

@@ -1,6 +1,9 @@
+.table-wrapper {
+  overflow-x: scroll;
+}
+
 .table-cell {
   white-space: nowrap;
   font-size: 14px;
   line-height: 14px;
-  font-weight: 600;
 }

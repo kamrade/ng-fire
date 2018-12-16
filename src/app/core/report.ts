@@ -26,7 +26,7 @@ export class ReportComplex {
   id: string;
 }
 
-export const reportsInTable = [
+export const reportColumns = [
   'status',
   'manager',
   'region',
