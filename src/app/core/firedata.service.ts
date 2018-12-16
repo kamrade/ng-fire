@@ -47,14 +47,14 @@ export class FiredataService {
   }
 
   // CRUD
-  public getItemsWithIDs$<T>(ref: AngularFirestoreCollection<T>): Observable<any> {
+  public getItemsWithIDs$(ref: AngularFirestoreCollection): Observable<any[]> {
     return ref.snapshotChanges()
       .pipe( map(actions => {
         return actions.map(a => {
           return {
             data: a.payload.doc.data(),
             id: a.payload.doc.id
-          }
+          };
         });
       }));
   }
