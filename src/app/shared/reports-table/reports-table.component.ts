@@ -60,7 +60,7 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
               .subscribe(reports => {
 
                 this.reports = reports;
-                this.reports.map((report, i) => {
+                this.reports.map((report) => {
                   let directionId = report.data.direction;
                   let equipmentId = report.data.equipment;
                   let facilityId = report.data.facility;
@@ -80,7 +80,7 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
                   this.firedataService.getEntityById('responsibility', responsibilityId)
                     .subscribe(item => this.responsibilities[report.data.responsibility] = item.title);
                   this.firedataService.getEntityById('status', statusId)
-                    .subscribe(item => this.statuses[report.data.status] = item.title);
+                    .subscribe(item => this.statuses[report.data.status] = item.title );
 
                   this.clientsService.getClientById(clientId)
                     .subscribe(cl => {
