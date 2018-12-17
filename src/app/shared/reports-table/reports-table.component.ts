@@ -31,12 +31,12 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
 
   clients = {};
 
-  directions = {};
-  equipments = {};
-  facilities = {};
-  regions = {};
-  responsibilities = {};
-  statuses = {};
+  // directions = {};
+  // equipments = {};
+  // facilities = {};
+  // regions = {};
+  // responsibilities = {};
+  // statuses = [];
 
   reportColumns = reportColumns;
 
@@ -60,32 +60,33 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
               .subscribe(reports => {
 
                 this.reports = reports;
-                this.reports.map((report) => {
-                  let directionId = report.data.direction;
-                  let equipmentId = report.data.equipment;
-                  let facilityId = report.data.facility;
-                  let regionId = report.data.region;
-                  let responsibilityId = report.data.responsibility;
-                  let statusId = report.data.status;
-                  let clientId = report.data.client;
+                this.reports.map((report, i) => {
 
-                  this.firedataService.getEntityById('direction', directionId)
-                    .subscribe(item => this.directions[report.data.direction] = item.title);
-                  this.firedataService.getEntityById('equipment', equipmentId)
-                    .subscribe(item => this.equipments[report.data.equipment] = item.title);
-                  this.firedataService.getEntityById('facility', facilityId)
-                    .subscribe(item => this.facilities[report.data.facility] = item.title);
-                  this.firedataService.getEntityById('region', regionId)
-                    .subscribe(item => this.regions[report.data.region] = item.title);
-                  this.firedataService.getEntityById('responsibility', responsibilityId)
-                    .subscribe(item => this.responsibilities[report.data.responsibility] = item.title);
-                  this.firedataService.getEntityById('status', statusId)
-                    .subscribe(item => this.statuses[report.data.status] = item.title );
+                  // let directionId = report.data.direction;
+                  // let equipmentId = report.data.equipment;
+                  // let facilityId = report.data.facility;
+                  // let regionId = report.data.region;
+                  // let responsibilityId = report.data.responsibility;
+                  // let statusId = report.data.status;
+                  // let clientId = report.data.client;
 
-                  this.clientsService.getClientById(clientId)
-                    .subscribe(cl => {
-                      this.clients[report.data.client] = cl.title;
-                    });
+                  // this.firedataService.getEntityById('direction', directionId)
+                  //   .subscribe(item => this.directions[report.data.direction] = item.title);
+                  // this.firedataService.getEntityById('equipment', equipmentId)
+                  //   .subscribe(item => this.equipments[report.data.equipment] = item.title);
+                  // this.firedataService.getEntityById('facility', facilityId)
+                  //   .subscribe(item => this.facilities[report.data.facility] = item.title);
+                  // this.firedataService.getEntityById('region', regionId)
+                  //   .subscribe(item => this.regions[report.data.region] = item.title);
+                  // this.firedataService.getEntityById('responsibility', responsibilityId)
+                  //   .subscribe(item => this.responsibilities[report.data.responsibility] = item.title);
+                  // this.firedataService.getEntityById('status', statusId)
+                  //   .subscribe(item => this.statuses[report.data.status] = item.title );
+
+                  // this.clientsService.getClientById(clientId)
+                  //   .subscribe(cl => {
+                  //     this.clients[report.data.client] = cl.title;
+                  //   });
                 });
 
               })
@@ -110,23 +111,26 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
       return this.getClientTitle( currentData[column] );
     }
     if (column === 'status') {
-      return this.statuses[currentData[column]];
+      return this.firedataService.st[ currentData[column] ].title;
     }
-    if (column === 'direction') {
-      return this.directions[currentData[column]];
-    }
-    if (column === 'equipment') {
-      return this.equipments[currentData[column]];
-    }
-    if (column === 'facility') {
-      return this.facilities[currentData[column]];
-    }
-    if (column === 'region') {
-      return this.regions[currentData[column]];
-    }
-    if (column === 'responsibility') {
-      return this.responsibilities[currentData[column]];
-    }
+    // if (column === 'status') {
+    //   return this.statuses[currentData[column]];
+    // }
+    // if (column === 'direction') {
+    //   return this.directions[currentData[column]];
+    // }
+    // if (column === 'equipment') {
+    //   return this.equipments[currentData[column]];
+    // }
+    // if (column === 'facility') {
+    //   return this.facilities[currentData[column]];
+    // }
+    // if (column === 'region') {
+    //   return this.regions[currentData[column]];
+    // }
+    // if (column === 'responsibility') {
+    //   return this.responsibilities[currentData[column]];
+    // }
     return currentData[column];
   }
 

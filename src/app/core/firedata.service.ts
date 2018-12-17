@@ -24,11 +24,13 @@ export class FiredataService {
   public regions: Observable<EntityComplex[]>;
   public resp: Observable<EntityComplex[]>;
   public statuses: Observable<EntityComplex[]>;
+  public st = {};
   public directions: Observable<EntityComplex[]>;
   public facilities: Observable<EntityComplex[]>;
   public equipments: Observable<EntityComplex[]>;
 
   constructor( private afs: AngularFirestore ) {
+
     this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
     this.statusesCollection = this.afs.collection('ent_statuses', ref => ref);
     this.regionsCollection = this.afs.collection('ent_region', ref => ref);
@@ -44,6 +46,13 @@ export class FiredataService {
     this.resp = this.getItemsWithIDs$(this.respCollection);
     this.facilities = this.getItemsWithIDs$(this.facilitiesCollection);
     this.equipments = this.getItemsWithIDs$(this.equipmentsCollection);
+
+    this.statuses
+      .subscribe(items => {
+        items.forEach(item => {
+          this.st[item.id] = item.data;
+        });
+      });
   }
 
   // CRUD
