@@ -21,53 +21,61 @@ export class FiredataService {
   private facilitiesCollection: AngularFirestoreCollection<Entity>;
   private equipmentsCollection: AngularFirestoreCollection<Entity>;
 
-  public regions:    Observable<EntityComplex[]>;
-  public resp:       Observable<EntityComplex[]>;
-  public statuses:   Observable<EntityComplex[]>;
-  public directions: Observable<EntityComplex[]>;
-  public facilities: Observable<EntityComplex[]>;
-  public equipments: Observable<EntityComplex[]>;
+  public regions:    Function;
+  public resp:       Function;
+  public statuses:   Function;
+  public directions: Function;
+  public facilities: Function;
+  public equipments: Function;
+  // public regions:    Observable<EntityComplex[]>;
+  // public resp:       Observable<EntityComplex[]>;
+  // public statuses:   Observable<EntityComplex[]>;
+  // public directions: Observable<EntityComplex[]>;
+  // public facilities: Observable<EntityComplex[]>;
+  // public equipments: Observable<EntityComplex[]>;
 
-  public statusesA = {};
+  public postsHash =      {};
+  public regionsHash =    {};
+  public respHash =       {};
+  public statusesHash =   {};
+  public directionsHash = {};
+  public facilitiesHash = {};
+  public equipmentsHash = {};
 
   constructor( private afs: AngularFirestore ) {
 
-    this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
-    this.statusesCollection = this.afs.collection('ent_statuses', ref => ref);
-    this.regionsCollection = this.afs.collection('ent_region', ref => ref);
+    this.postsCollection      = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
+    this.statusesCollection   = this.afs.collection('ent_statuses', ref => ref);
+    this.regionsCollection    = this.afs.collection('ent_region', ref => ref);
     this.directionsCollection = this.afs.collection('ent_direction', ref => ref);
-    this.respCollection = this.afs.collection('ent_responsibility', ref => ref);
+    this.respCollection       = this.afs.collection('ent_responsibility', ref => ref);
     this.facilitiesCollection = this.afs.collection('ent_facility', ref => ref);
     this.equipmentsCollection = this.afs.collection('ent_equipment', ref => ref);
 
-    this.posts = this.getItemsWithIDs$(this.postsCollection);
-    this.statuses = this.getItemsWithIDs$(this.statusesCollection);
-    this.regions = this.getItemsWithIDs$(this.regionsCollection);
-    this.directions = this.getItemsWithIDs$(this.directionsCollection);
-    this.resp = this.getItemsWithIDs$(this.respCollection);
-    this.facilities = this.getItemsWithIDs$(this.facilitiesCollection);
-    this.equipments = this.getItemsWithIDs$(this.equipmentsCollection);
+    this.posts      = this.getItemsWithIDs$(this.postsCollection, this.postsHash);
+
+    this.regions    = () => this.getItemsWithIDs$(this.regionsCollection, this.regionsHash);
+    this.resp       = () => this.getItemsWithIDs$(this.respCollection, this.respHash);
+    this.statuses   = () => this.getItemsWithIDs$(this.statusesCollection, this.statusesHash);
+    this.directions = () => this.getItemsWithIDs$(this.directionsCollection, this.directionsHash);
+    this.facilities = () => this.getItemsWithIDs$(this.facilitiesCollection, this.facilitiesHash);
+    this.equipments = () => this.getItemsWithIDs$(this.equipmentsCollection, this.equipmentsHash);
 
   }
 
   // CRUD
-  public getItemsWithIDs$(ref: AngularFirestoreCollection): Observable<any[]> {
+  public getItemsWithIDs$(ref: AngularFirestoreCollection, entityHash: Object): Observable<any[]> {
     return ref.snapshotChanges()
-      .pipe( map(actions => {
-        return actions.map(a => {
-
-          if (!this.statusesA[a.payload.doc.id]) {
-            this.statusesA[a.payload.doc.id] = a.payload.doc.data()
-          }
-
-          console.log(this.statusesA);
-
-          return {
-            data: a.payload.doc.data(),
-            id: a.payload.doc.id
-          };
-        });
-      }));
+      .pipe(
+        map(actions => {
+          return actions.map(a => {
+            entityHash[a.payload.doc.id] = a.payload.doc.data();
+            return {
+              data: a.payload.doc.data(),
+              id: a.payload.doc.id
+            };
+          });
+        }));
   }
 
   // HELPER

@@ -44,17 +44,17 @@ export class EntitiesComponent implements OnInit {
   getEntities(value): Observable<EntityComplex[]> {
     switch(value) {
       case 'status':
-        return this.firedataService.statuses;
+        return this.firedataService.statuses();
       case 'region':
-        return this.firedataService.regions;
+        return this.firedataService.regions();
       case 'direction':
-        return this.firedataService.directions;
+        return this.firedataService.directions();
       case 'responsibility':
-        return this.firedataService.resp;
+        return this.firedataService.resp();
       case 'facility':
-        return this.firedataService.facilities;
+        return this.firedataService.facilities();
       case 'equipment':
-        return this.firedataService.equipments;
+        return this.firedataService.equipments();
       default:
         return null;
     }

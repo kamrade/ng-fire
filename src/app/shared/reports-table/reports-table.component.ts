@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, iif } from 'rxjs';
-import { takeUntil, filter, tap,switchMap, map } from 'rxjs/operators';
+import { Subject, iif, from } from 'rxjs';
+import { takeUntil, filter, tap, switchMap, map, mergeAll, take } from 'rxjs/operators';
 
 // SERVICES
 import { AuthService } from 'src/app/core/auth.service';
@@ -41,6 +41,12 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
 
     this.firedataService.statuses
 
+    let tempReports;
+    let entities;
+
+    this.firedataService.regions()
+      .subscribe()
+
     this.authService.user
       .pipe(
         takeUntil(this.destroy$),
@@ -53,26 +59,28 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
         switchMap(() =>
           iif(
             () => !!this.userRoles.admin,
+            // if true (this user is admin)
             this.reportsService.getReportsWithIDs$(),
+            // if false (this is not admin)
             this.reportsService.getReportsForCurrentUser$(this.userId)
           )
         ),
         tap((reports) => {
-          this.reports = reports;
+          tempReports = reports;
         }),
         switchMap(() => {
-          return this.firedataService.statuses
+          let regions = this.firedataService.regions();
+          return regions;
         }),
-        map(statuses => {
-          return this.reports.map(report => {
+        map(regions => {
+          return tempReports.map(report => {
             return {
               data: {
                 ...report.data,
-                status: statuses.filter(status => status.id === report.data.status)[0].data.title
-              },
-              id: report.id
+                region: regions.filter(region => region.id === report.data.region)[0].data.title
+              }
             }
-          });
+          })
         }))
       .subscribe(reports => {
         this.reports = reports;
