@@ -21,13 +21,14 @@ export class FiredataService {
   private facilitiesCollection: AngularFirestoreCollection<Entity>;
   private equipmentsCollection: AngularFirestoreCollection<Entity>;
 
-  public regions: Observable<EntityComplex[]>;
-  public resp: Observable<EntityComplex[]>;
-  public statuses: Observable<EntityComplex[]>;
-  public st = {};
+  public regions:    Observable<EntityComplex[]>;
+  public resp:       Observable<EntityComplex[]>;
+  public statuses:   Observable<EntityComplex[]>;
   public directions: Observable<EntityComplex[]>;
   public facilities: Observable<EntityComplex[]>;
   public equipments: Observable<EntityComplex[]>;
+
+  public statusesA = {};
 
   constructor( private afs: AngularFirestore ) {
 
@@ -47,12 +48,6 @@ export class FiredataService {
     this.facilities = this.getItemsWithIDs$(this.facilitiesCollection);
     this.equipments = this.getItemsWithIDs$(this.equipmentsCollection);
 
-    this.statuses
-      .subscribe(items => {
-        items.forEach(item => {
-          this.st[item.id] = item.data;
-        });
-      });
   }
 
   // CRUD
@@ -60,6 +55,13 @@ export class FiredataService {
     return ref.snapshotChanges()
       .pipe( map(actions => {
         return actions.map(a => {
+
+          if (!this.statusesA[a.payload.doc.id]) {
+            this.statusesA[a.payload.doc.id] = a.payload.doc.data()
+          }
+
+          console.log(this.statusesA);
+
           return {
             data: a.payload.doc.data(),
             id: a.payload.doc.id
@@ -67,53 +69,6 @@ export class FiredataService {
         });
       }));
   }
-
-  // пока не используется. ф-цию выполняет getItemsWithID$
-  public getItems$(ref: AngularFirestoreCollection<DocumentData>): Observable<any> {
-    return ref.valueChanges();
-  }
-
-  public getEntityById(entityType: string, entityId: string):Observable<Entity> {
-    let ref: AngularFirestoreCollection;
-    switch(entityType) {
-      case 'status':
-        ref = this.statusesCollection;
-        break;
-      case 'region':
-        ref = this.regionsCollection
-        break;
-      case 'direction':
-        ref = this.directionsCollection;
-        break;
-      case 'responsibility':
-        ref = this.respCollection;
-        break;
-      case 'facility':
-        ref = this.facilitiesCollection;
-        break;
-      case 'equipment':
-        ref = this.equipmentsCollection;
-        break;
-    }
-
-    return ref.doc(entityId).valueChanges() as Observable<Entity>;
-  }
-
-  // сейчас тестово используются для создания отчета.
-  public getStatus(id: string) {
-    const docRef = this.statusesCollection.doc(id);
-    return docRef.get();
-      // .subscribe(st => console.log(st.data().title));
-  }
-
-  // сейчас тестово используются для создания отчета.
-  public getRegion(id: string) {
-    const docRef = this.regionsCollection.doc(id);
-    docRef.get()
-      .subscribe(reg => console.log(reg.data().title));
-  }
-
-  // COMMON CRUD
 
   // HELPER
   private setEntityCollection(entityType: string): AngularFirestoreCollection<DocumentData> {
@@ -179,6 +134,53 @@ export class FiredataService {
     return this.postsCollection.add(itemData)
       .then(() => { console.log(':: post created') })
       .catch(err => { console.log(':: post remove error', err) });
+  }
+
+
+
+  // пока не используется. ф-цию выполняет getItemsWithID$
+  public getItems$(ref: AngularFirestoreCollection<DocumentData>): Observable<any> {
+    return ref.valueChanges();
+  }
+
+  public getEntityById(entityType: string, entityId: string):Observable<Entity> {
+    let ref: AngularFirestoreCollection;
+    switch(entityType) {
+      case 'status':
+        ref = this.statusesCollection;
+        break;
+      case 'region':
+        ref = this.regionsCollection
+        break;
+      case 'direction':
+        ref = this.directionsCollection;
+        break;
+      case 'responsibility':
+        ref = this.respCollection;
+        break;
+      case 'facility':
+        ref = this.facilitiesCollection;
+        break;
+      case 'equipment':
+        ref = this.equipmentsCollection;
+        break;
+    }
+
+    return ref.doc(entityId).valueChanges() as Observable<Entity>;
+  }
+
+  // сейчас тестово используются для создания отчета.
+  public getStatus(id: string) {
+    const docRef = this.statusesCollection.doc(id);
+    return docRef.get();
+      // .subscribe(st => console.log(st.data().title));
+  }
+
+  // сейчас тестово используются для создания отчета.
+  public getRegion(id: string) {
+    const docRef = this.regionsCollection.doc(id);
+    docRef.get()
+      .subscribe(reg => console.log(reg.data().title));
   }
 
 }

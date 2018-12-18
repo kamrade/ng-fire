@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
 import { FiredataService } from 'src/app/core/firedata.service';
 import { ClientsService } from 'src/app/core/clients.service';
@@ -18,13 +19,20 @@ export class EntitiesComponent implements OnInit {
   clientFormShow = false;
   currentRoute = '';
   data$: Observable<EntityComplex[]>;
+  destroy$ = new Subject();
 
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
     private firedataService: FiredataService) {
-      this.route.url.subscribe(value => {
-        this.currentRoute = value[0].path;
+      this.route.url
+      .pipe(
+        takeUntil(this.destroy$),
+        tap(value => {
+          this.currentRoute = value[0].path;
+        })
+      )
+      .subscribe(() => {
         this.data$ = this.getEntities(this.currentRoute);
       });
   }
@@ -75,6 +83,11 @@ export class EntitiesComponent implements OnInit {
 
   hideClientForm() {
     this.clientFormShow = false;
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

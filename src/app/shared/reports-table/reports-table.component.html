@@ -15,11 +15,13 @@
       </thead>
 
       <tbody>
+
         <tr *ngFor="let report of reports"  class="table-cell mb-1">
           <td *ngFor="let col of reportColumns" class="table-cell mr-3">
             <span>{{ renderCell(report.data, col) }}</span>
           </td>
         </tr>
+
       </tbody>
 
     </table>

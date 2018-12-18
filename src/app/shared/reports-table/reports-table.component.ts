@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, iif } from 'rxjs';
+import { takeUntil, filter, tap,switchMap, map } from 'rxjs/operators';
 
 // SERVICES
 import { AuthService } from 'src/app/core/auth.service';
@@ -9,8 +9,7 @@ import { ClientsService } from 'src/app/core/clients.service';
 import { FiredataService } from 'src/app/core/firedata.service';
 
 // CLASSES & INTERFACES
-import { Report, ReportComplex, reportColumns } from 'src/app/core/report';
-import { Client, ClientComplex } from 'src/app/core/client';
+import { ReportComplex, reportColumns } from 'src/app/core/report';
 import { Roles } from 'src/app/core/user';
 
 // ---
@@ -31,13 +30,6 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
 
   clients = {};
 
-  // directions = {};
-  // equipments = {};
-  // facilities = {};
-  // regions = {};
-  // responsibilities = {};
-  // statuses = [];
-
   reportColumns = reportColumns;
 
   constructor(
@@ -47,59 +39,43 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
     public firedataService: FiredataService
   ) {
 
+    this.firedataService.statuses
+
     this.authService.user
-      .pipe( takeUntil(this.destroy$) )
-      .subscribe(user => {
-        if (user) {
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(user => !!user),
+        tap(user => {
           this.userId    = user.uid;
           this.userRoles = user.roles;
           this.userName  = user.displayName;
-          if (this.userRoles.admin) {
-            this.reportsService.getReportsWithIDs$()
-              .pipe( takeUntil(this.destroy$) )
-              .subscribe(reports => {
-
-                this.reports = reports;
-                this.reports.map((report, i) => {
-
-                  // let directionId = report.data.direction;
-                  // let equipmentId = report.data.equipment;
-                  // let facilityId = report.data.facility;
-                  // let regionId = report.data.region;
-                  // let responsibilityId = report.data.responsibility;
-                  // let statusId = report.data.status;
-                  // let clientId = report.data.client;
-
-                  // this.firedataService.getEntityById('direction', directionId)
-                  //   .subscribe(item => this.directions[report.data.direction] = item.title);
-                  // this.firedataService.getEntityById('equipment', equipmentId)
-                  //   .subscribe(item => this.equipments[report.data.equipment] = item.title);
-                  // this.firedataService.getEntityById('facility', facilityId)
-                  //   .subscribe(item => this.facilities[report.data.facility] = item.title);
-                  // this.firedataService.getEntityById('region', regionId)
-                  //   .subscribe(item => this.regions[report.data.region] = item.title);
-                  // this.firedataService.getEntityById('responsibility', responsibilityId)
-                  //   .subscribe(item => this.responsibilities[report.data.responsibility] = item.title);
-                  // this.firedataService.getEntityById('status', statusId)
-                  //   .subscribe(item => this.statuses[report.data.status] = item.title );
-
-                  // this.clientsService.getClientById(clientId)
-                  //   .subscribe(cl => {
-                  //     this.clients[report.data.client] = cl.title;
-                  //   });
-                });
-
-              })
-
-          } else {
-
+        }),
+        switchMap(() =>
+          iif(
+            () => !!this.userRoles.admin,
+            this.reportsService.getReportsWithIDs$(),
             this.reportsService.getReportsForCurrentUser$(this.userId)
-              .pipe( takeUntil(this.destroy$) )
-              .subscribe(reports => {
-                this.reports = reports;
-              });
-          }
-        }
+          )
+        ),
+        tap((reports) => {
+          this.reports = reports;
+        }),
+        switchMap(() => {
+          return this.firedataService.statuses
+        }),
+        map(statuses => {
+          return this.reports.map(report => {
+            return {
+              data: {
+                ...report.data,
+                status: statuses.filter(status => status.id === report.data.status)[0].data.title
+              },
+              id: report.id
+            }
+          });
+        }))
+      .subscribe(reports => {
+        this.reports = reports;
       });
   }
 
@@ -107,30 +83,6 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
   }
 
   renderCell(currentData, column) {
-    if (column === 'client') {
-      return this.getClientTitle( currentData[column] );
-    }
-    if (column === 'status') {
-      return this.firedataService.st[ currentData[column] ].title;
-    }
-    // if (column === 'status') {
-    //   return this.statuses[currentData[column]];
-    // }
-    // if (column === 'direction') {
-    //   return this.directions[currentData[column]];
-    // }
-    // if (column === 'equipment') {
-    //   return this.equipments[currentData[column]];
-    // }
-    // if (column === 'facility') {
-    //   return this.facilities[currentData[column]];
-    // }
-    // if (column === 'region') {
-    //   return this.regions[currentData[column]];
-    // }
-    // if (column === 'responsibility') {
-    //   return this.responsibilities[currentData[column]];
-    // }
     return currentData[column];
   }
 
