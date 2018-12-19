@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ModalService } from 'src/app/core/modal.service';
+import { FiredataService } from 'src/app/core/firedata.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +11,14 @@ import { ModalService } from 'src/app/core/modal.service';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private modalService: ModalService
-  ) { }
+    private modalService: ModalService,
+    private firedataService: FiredataService
+  ) {
+
+    console.log("dash constructor");
+    console.log(this.firedataService.st);
+
+  }
 
   ngOnInit() {}
 

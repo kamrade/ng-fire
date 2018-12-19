@@ -25,7 +25,7 @@ export class NewReportFormComponent implements OnInit {
   currentYear = new Date().getFullYear();
 
   constructor(
-    private firedataService: FiredataService,
+    // private firedataService: FiredataService,
     private auth: AuthService,
     public clientsService: ClientsService,
     private reportService: ReportsService) { }

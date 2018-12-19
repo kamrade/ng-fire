@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil, tap, switchMap } from 'rxjs/operators';
 
 import { FiredataService } from 'src/app/core/firedata.service';
 import { ClientsService } from 'src/app/core/clients.service';
@@ -18,43 +18,44 @@ export class EntitiesComponent implements OnInit {
 
   clientFormShow = false;
   currentRoute = '';
-  data$: Observable<EntityComplex[]>;
+  data: EntityComplex[];
   destroy$ = new Subject();
 
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
     private firedataService: FiredataService) {
+
+
       this.route.url
-      .pipe(
-        takeUntil(this.destroy$),
-        tap(value => {
-          this.currentRoute = value[0].path;
-        })
-      )
-      .subscribe(() => {
-        this.data$ = this.getEntities(this.currentRoute);
-      });
+        .pipe(
+            takeUntil(this.destroy$),
+            tap(route => {
+              this.currentRoute = route[0].path;
+            })
+        ).subscribe((value) => {
+          console.log(':: from component');
+          console.log(value[0].path);
+          this.data = this.getEntities(this.currentRoute);
+        });
   }
 
-  ngOnInit() {
-    // console.log(this.authService.users$.subscribe(users => console.log(users)));
-  }
+  ngOnInit() {}
 
-  getEntities(value): Observable<EntityComplex[]> {
+  getEntities(value): EntityComplex[] {
     switch(value) {
       case 'status':
-        return this.firedataService.statuses();
+        return this.firedataService.statusesArray;
       case 'region':
-        return this.firedataService.regions();
+        return this.firedataService.regionsArray;
       case 'direction':
-        return this.firedataService.directions();
+        return this.firedataService.directionsArray;
       case 'responsibility':
-        return this.firedataService.resp();
+        return this.firedataService.responsibilitiesArray;
       case 'facility':
-        return this.firedataService.facilities();
+        return this.firedataService.facilitiesArray;
       case 'equipment':
-        return this.firedataService.equipments();
+        return this.firedataService.equipmentsArray;
       default:
         return null;
     }

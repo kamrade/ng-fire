@@ -11,7 +11,10 @@ export class SettingsComponent implements OnInit {
 
   public isAdmin = false;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService
+  ) {
+
     this.authService.user
       .subscribe( user => this.isAdmin = user && user.roles.admin );
   }

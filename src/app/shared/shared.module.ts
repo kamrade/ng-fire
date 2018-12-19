@@ -20,7 +20,7 @@ import { NewReportFormComponent } from './new-report-form/new-report-form.compon
 
 // POSTS
 import { SinglePostComponent } from './single-post/single-post.component';
-import { ReportListComponent } from './report-list/report-list.component';
+// import { ReportListComponent } from './report-list/report-list.component';
 import { ReportsTableComponent } from './reports-table/reports-table.component';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { ReportsTableComponent } from './reports-table/reports-table.component';
     ClientFormComponent,
     NewReportFormComponent,
     SinglePostComponent,
-    ReportListComponent,
+    // ReportListComponent,
     ReportsTableComponent
   ],
   exports: [
@@ -54,7 +54,7 @@ import { ReportsTableComponent } from './reports-table/reports-table.component';
     ClientFormComponent,
     NewReportFormComponent,
     SinglePostComponent,
-    ReportListComponent,
+    // ReportListComponent,
     ReportsTableComponent
   ]
 })
