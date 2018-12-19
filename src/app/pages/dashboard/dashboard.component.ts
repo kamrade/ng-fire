@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { EntityComplex } from 'src/app/core/entities/entity';
+
 import { ModalService } from 'src/app/core/modal.service';
 import { FiredataService } from 'src/app/core/firedata.service';
 
@@ -10,17 +13,17 @@ import { FiredataService } from 'src/app/core/firedata.service';
 })
 export class DashboardComponent implements OnInit {
 
+  statuses$: Observable<EntityComplex[]>;
+
   constructor(
     private modalService: ModalService,
     private firedataService: FiredataService
-  ) {
+  ) {}
 
-    console.log("dash constructor");
-    console.log(this.firedataService.st);
-
+  ngOnInit() {
+    this.firedataService.getEntity('status')
+      .subscribe(st => console.log("statuses:", st));
   }
-
-  ngOnInit() {}
 
   openModal(id: string) {
     this.modalService.open(id);

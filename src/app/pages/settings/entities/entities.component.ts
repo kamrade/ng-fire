@@ -18,44 +18,36 @@ export class EntitiesComponent implements OnInit {
 
   clientFormShow = false;
   currentRoute = '';
-  data: EntityComplex[];
+  data: Observable<EntityComplex[]>;
   destroy$ = new Subject();
 
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
-    private firedataService: FiredataService) {
+    private firedataService: FiredataService) {}
 
-
-      this.route.url
-        .pipe(
-            takeUntil(this.destroy$),
-            tap(route => {
-              this.currentRoute = route[0].path;
-            })
-        ).subscribe((value) => {
-          console.log(':: from component');
-          console.log(value[0].path);
-          this.data = this.getEntities(this.currentRoute);
-        });
+  ngOnInit() {
+    this.route.url
+      .pipe(
+        takeUntil(this.destroy$),
+        tap(route => this.currentRoute = route[0].path)
+      ).subscribe((value) => this.data = this.getEntities(this.currentRoute));
   }
 
-  ngOnInit() {}
-
-  getEntities(value): EntityComplex[] {
+  getEntities(value): Observable<EntityComplex[]> {
     switch(value) {
       case 'status':
-        return this.firedataService.statusesArray;
+        return this.firedataService.getEntity('status');
       case 'region':
-        return this.firedataService.regionsArray;
+        return this.firedataService.getEntity('region');
       case 'direction':
-        return this.firedataService.directionsArray;
+        return this.firedataService.getEntity('direction');
       case 'responsibility':
-        return this.firedataService.responsibilitiesArray;
+        return this.firedataService.getEntity('responsibility');
       case 'facility':
-        return this.firedataService.facilitiesArray;
+        return this.firedataService.getEntity('facility');
       case 'equipment':
-        return this.firedataService.equipmentsArray;
+        return this.firedataService.getEntity('equipment');
       default:
         return null;
     }

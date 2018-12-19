@@ -14,38 +14,58 @@ export class FiredataService {
   private postsCollection: AngularFirestoreCollection<Post>;
   public posts: Observable<PostComplex[]>;
 
-  private statusesCollection:   AngularFirestoreCollection<Entity>;
-  private regionsCollection:    AngularFirestoreCollection<Entity>;
-  private directionsCollection: AngularFirestoreCollection<Entity>;
-  private respCollection:       AngularFirestoreCollection<Entity>;
-  private facilitiesCollection: AngularFirestoreCollection<Entity>;
-  private equipmentsCollection: AngularFirestoreCollection<Entity>;
-
-  public statuses:   Observable<EntityComplex[]>;
-  public regions:    Observable<EntityComplex[]>;
-  public directions: Observable<EntityComplex[]>;
-  public resp:       Observable<EntityComplex[]>;
-  public facilities: Observable<EntityComplex[]>;
-  public equipments: Observable<EntityComplex[]>;
+  private staCol: AngularFirestoreCollection<Entity>;
+  private regCol: AngularFirestoreCollection<Entity>;
+  private dirCol: AngularFirestoreCollection<Entity>;
+  private resCol: AngularFirestoreCollection<Entity>;
+  private facCol: AngularFirestoreCollection<Entity>;
+  private equCol: AngularFirestoreCollection<Entity>;
 
   constructor( private afs: AngularFirestore ) {
 
-    this.postsCollection      = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
-    this.posts                = this.getItemsWithIDs$(this.postsCollection);
+    this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('updatedAt', 'desc'));
+    this.posts = this.getItemsWithIDs$(this.postsCollection);
 
-    this.statusesCollection   = this.afs.collection('ent_statuses', ref => ref);
-    this.regionsCollection    = this.afs.collection('ent_region', ref => ref);
-    this.directionsCollection = this.afs.collection('ent_direction', ref => ref);
-    this.respCollection       = this.afs.collection('ent_responsibility', ref => ref);
-    this.facilitiesCollection = this.afs.collection('ent_facility', ref => ref);
-    this.equipmentsCollection = this.afs.collection('ent_equipment', ref => ref);
+    this.staCol = this.afs.collection('ent_statuses', ref => ref);
+    this.regCol = this.afs.collection('ent_region', ref => ref);
+    this.dirCol = this.afs.collection('ent_direction', ref => ref);
+    this.resCol = this.afs.collection('ent_responsibility', ref => ref);
+    this.facCol = this.afs.collection('ent_facility', ref => ref);
+    this.equCol = this.afs.collection('ent_equipment', ref => ref);
+  }
 
-    this.statuses   = this.getItemsWithIDs$(this.statusesCollection);
-    this.regions    = this.getItemsWithIDs$(this.regionsCollection);
-    this.directions = this.getItemsWithIDs$(this.directionsCollection);
-    this.resp       = this.getItemsWithIDs$(this.respCollection);
-    this.facilities = this.getItemsWithIDs$(this.facilitiesCollection);
-    this.equipments = this.getItemsWithIDs$(this.equipmentsCollection);
+  // NEW
+  public getEntity(entityType: string) {
+    let ref: AngularFirestoreCollection<Entity>;
+    switch(entityType) {
+      case 'status':
+        ref = this.staCol;
+        break;
+      case 'region':
+        ref = this.regCol;
+        break;
+      case 'direction':
+        ref = this.dirCol;
+        break;
+      case 'responsibility':
+        ref = this.resCol;
+        break;
+      case 'facility':
+        ref = this.facCol;
+        break;
+      case 'equipment':
+        ref = this.equCol;
+        break;
+      default:
+        ref = null;
+    }
+
+    return ref.snapshotChanges().pipe(
+      map(actions => actions.map(a => ({
+        data: a.payload.doc.data(),
+        id: a.payload.doc.id
+      })))
+    );
 
   }
 
@@ -67,17 +87,17 @@ export class FiredataService {
   private setEntityCollection(entityType: string): AngularFirestoreCollection<DocumentData> {
     switch(entityType) {
       case 'status':
-        return this.statusesCollection;
+        return this.staCol;
       case 'region':
-        return this.regionsCollection;
+        return this.regCol;
       case 'direction':
-        return this.directionsCollection;
+        return this.dirCol;
       case 'responsibility':
-        return this.respCollection;
+        return this.resCol;
       case 'facility':
-        return this.facilitiesCollection;
+        return this.facCol;
       case 'equipment':
-        return this.equipmentsCollection;
+        return this.equCol;
       default:
         return null;
     }
