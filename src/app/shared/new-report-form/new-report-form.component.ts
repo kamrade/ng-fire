@@ -7,7 +7,7 @@ import { ReportsService } from 'src/app/core/reports.service';
 
 import { EntityComplex } from 'src/app/models/entity';
 import { User } from 'src/app/core/user';
-import { Report } from 'src/app/core/report';
+import { Report } from 'src/app/models/report';
 
 @Component({
   selector: 'app-new-report-form',
