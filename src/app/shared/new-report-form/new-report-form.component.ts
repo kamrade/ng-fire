@@ -22,20 +22,41 @@ export class NewReportFormComponent implements OnInit {
   currentUserId: string;
   currentUserDisplayName: string;
 
+  statuses: EntityComplex[];
+  regions: EntityComplex[];
+  directions: EntityComplex[];
+  responsibilities: EntityComplex[];
+  facilities: EntityComplex[];
+  equipments: EntityComplex[];
+
   currentYear = new Date().getFullYear();
 
   constructor(
-    // private firedataService: FiredataService,
+    private firedataService: FiredataService,
     private auth: AuthService,
     public clientsService: ClientsService,
     private reportService: ReportsService) { }
 
   ngOnInit() {
+
     this.auth.user.subscribe(user => {
       this.currentUser = user;
       this.currentUserId = user.uid;
       this.currentUserDisplayName = this.currentUser.displayName;
     });
+
+    this.firedataService.getEntity('status')
+      .subscribe(val => this.statuses = val);
+    this.firedataService.getEntity('region')
+      .subscribe(val => this.regions = val);
+    this.firedataService.getEntity('direction')
+      .subscribe(val => this.directions = val);
+    this.firedataService.getEntity('responsibility')
+      .subscribe(val => this.responsibilities = val);
+    this.firedataService.getEntity('facility')
+      .subscribe(val => this.facilities = val);
+    this.firedataService.getEntity('equipment')
+      .subscribe(val => this.equipments = val);
   }
 
   hideForm() {

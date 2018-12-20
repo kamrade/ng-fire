@@ -76,7 +76,8 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
       //   this.firedataService.getEntity('facility'),
       //   this.firedataService.getEntity('equipment')
       // ),
-      tap(allData => {
+      tap(data => {
+        console.log('update', data);
         this.collectedReports = [];
         this.reports.map(report => {
           this.collectedReports.push({

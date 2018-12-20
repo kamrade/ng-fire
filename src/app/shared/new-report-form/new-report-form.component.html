@@ -3,13 +3,13 @@
     <div class="new-report-form">
       <h3 class="mb-5">Создать отчет по продажам</h3>
 
-      <!-- <form #f="ngForm" (submit)="confirmForm($event, f)">
+      <form #f="ngForm" (submit)="confirmForm($event, f)">
 
         <label class="form-label mb-2">
           <span>Статус</span>
           <select name="status" ngModel required #status="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let opt of firedataService.statuses | async" [value]="opt.id">
+            <option *ngFor="let opt of statuses" [value]="opt.id">
               {{ opt.data.title }}
             </option>
           </select>
@@ -31,7 +31,7 @@
           <span>Регион</span>
           <select name="region" ngModel required #region="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let reg of firedataService.regions | async" [value]="reg.id">
+            <option *ngFor="let reg of regions" [value]="reg.id">
               {{ reg.data.title }}
             </option>
           </select>
@@ -41,7 +41,7 @@
           <span>Направление</span>
           <select name="direction" ngModel required #direction="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let direction of firedataService.directions | async" [value]="direction.id">
+            <option *ngFor="let direction of directions" [value]="direction.id">
               {{ direction.data.title }}
             </option>
           </select>
@@ -51,7 +51,7 @@
           <span>Ответственность</span>
           <select name="responsibility" ngModel required #responsibility="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let responsibility of firedataService.resp | async" [value]="responsibility.id">
+            <option *ngFor="let responsibility of responsibilities" [value]="responsibility.id">
               {{ responsibility.data.title }}
             </option>
           </select>
@@ -62,7 +62,7 @@
           <input [ngModel]="currentYear" name="year" ngModel required #year="ngModel" type="text" class="form-control form-control-lg">
         </label>
 
-        <label class="form-label mb-3">
+        <!-- <label class="form-label mb-3">
           <span>Заказчик</span>
           <select name="client" ngModel required #client="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
@@ -70,13 +70,13 @@
               {{ client.data.title }}
             </option>
           </select>
-        </label>
+        </label> -->
 
         <label class="form-label mb-3">
           <span>Объект</span>
           <select name="facility" ngModel required #facility="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let f of firedataService.facilities | async" [value]="f.id">
+            <option *ngFor="let f of facilities" [value]="f.id">
               {{ f.data.title }}
             </option>
           </select>
@@ -86,7 +86,7 @@
           <span>Оборудование</span>
           <select name="equipment" ngModel required #equipment="ngModel" type="text" class="form-control form-control-lg">
             <option value=""></option>
-            <option *ngFor="let e of firedataService.equipments | async" [value]="e.id">
+            <option *ngFor="let e of equipments" [value]="e.id">
               {{ e.data.title }}
             </option>
           </select>
@@ -132,7 +132,7 @@
           <button type="submit" class="btn btn-lg btn-primary align-top">Создать отчет</button>
         </div>
 
-      </form> -->
+      </form>
     </div>
   </div>
 </div>
