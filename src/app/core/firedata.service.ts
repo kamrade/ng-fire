@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
-import { Entity, EntityComplex } from './entities/entity';
+import { Entity, EntityComplex } from 'src/app/models/entity';
 import { Post, PostComplex } from './post';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { Post, PostComplex } from './post';
 export class FiredataService {
 
   private postsCollection: AngularFirestoreCollection<Post>;
-  public posts: Observable<PostComplex[]>;
+  public  posts: Observable<PostComplex[]>;
 
   private staCol: AngularFirestoreCollection<Entity>;
   private regCol: AngularFirestoreCollection<Entity>;
@@ -64,7 +64,8 @@ export class FiredataService {
       map(actions => actions.map(a => ({
         data: a.payload.doc.data(),
         id: a.payload.doc.id
-      })))
+      }))),
+      catchError(err => of(err))
     );
 
   }

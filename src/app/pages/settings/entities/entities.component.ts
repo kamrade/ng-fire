@@ -7,7 +7,7 @@ import { FiredataService } from 'src/app/core/firedata.service';
 import { ClientsService } from 'src/app/core/clients.service';
 import { AuthService } from 'src/app/core/auth.service';
 
-import { EntityComplex } from 'src/app/core/entities/entity';
+import { EntityComplex } from 'src/app/models/entity';
 
 @Component({
   selector: 'app-entities',

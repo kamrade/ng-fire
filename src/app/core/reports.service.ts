@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Report, ReportComplex } from './report';
+import { Report, ReportComplex } from 'src/app/models/report';
 
 @Injectable({
   providedIn: 'root'

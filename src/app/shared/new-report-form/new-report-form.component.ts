@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/core/auth.service';
 import { ClientsService } from 'src/app/core/clients.service';
 import { ReportsService } from 'src/app/core/reports.service';
 
-import { EntityComplex } from 'src/app/core/entities/entity';
+import { EntityComplex } from 'src/app/models/entity';
 import { User } from 'src/app/core/user';
 import { Report } from 'src/app/core/report';
 

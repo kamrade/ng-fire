@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { EntityComplex } from 'src/app/core/entities/entity';
+import { EntityComplex } from 'src/app/models/entity';
 
 import { ModalService } from 'src/app/core/modal.service';
 import { FiredataService } from 'src/app/core/firedata.service';

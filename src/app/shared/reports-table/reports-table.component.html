@@ -16,9 +16,9 @@
 
       <tbody>
 
-        <tr *ngFor="let report of reports"  class="table-cell mb-1">
+        <tr *ngFor="let report of collectedReports"  class="table-cell mb-1">
           <td *ngFor="let col of reportColumns" class="table-cell mr-3">
-            <span>{{ renderCell(report.data, col) }}</span>
+            <span>{{ renderCell(report, col) }}</span>
           </td>
         </tr>
 
