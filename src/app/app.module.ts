@@ -25,7 +25,6 @@ import { SigninPageComponent } from './pages/auth/signin-page/signin-page.compon
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IconsModule } from './icons/icons.module';
-import { ReportsComponent } from './pages/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     ModalComponent,
     SigninPageComponent,
     SignupPageComponent,
-    NotFoundComponent,
-    ReportsComponent
+    NotFoundComponent
   ],
   imports: [
     StoreModule.forRoot({ count: counterReducer }),

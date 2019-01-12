@@ -10,18 +10,22 @@ import { PublicComponent } from './pages/public/public.component';
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { EntitiesComponent } from './entities/entities/entities.component';
-import { ReportsComponent } from './pages/reports/reports.component';
-import { EntitiesPageComponent } from './entities/entities-page/entities-page.component';
-// import { LazyMainComponent } from './lazy/lazy-main/lazy-main.component';
+// import { EntitiesComponent } from './entities/entities/entities.component';
+// import { EntitiesPageComponent } from './entities/entities-page/entities-page.component';
 
 const routes: Routes = [{
   path: '',
   component: DashboardComponent,
+  canActivate: [AuthGuard],
   pathMatch: 'full'
 }, {
   path: 'lazy',
+  canActivate: [AuthGuard],
   loadChildren: './lazy/lazy.module#LazyModule'
+}, {
+  path: 'reports',
+  canActivate: [AuthGuard],
+  loadChildren: './reports/reports.module#ReportsModule'
 }];
 
 // const routes: Routes = [{

@@ -7,7 +7,7 @@ const routes: Routes = [{
   path: '',
   component: LazyMainComponent,
   pathMatch: 'full'
-}]
+}];
 
 @NgModule({
   declarations: [

@@ -1,9 +1,8 @@
 <nav class="navigation">
-  <a
-    [routerLinkActiveOptions]="{ exact: true }"
-    routerLinkActive="active-link"
-    routerLink="/">Dashboard</a>{{' '}}
-  <a routerLinkActive="active-link" routerLink="/reports">Reports</a>{{' '}}
+  <a [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active-link" routerLink="/">Dashboard</a>{{' '}}
+  <a [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active-link" routerLink="/reports">Reports</a>{{' '}}
   <a routerLinkActive="active-link" routerLink="/setting">Setting</a>{{' '}}
   <a routerLinkActive="active-link" routerLink="/profile">Profile</a>{{' '}}
   <a routerLinkActive="active-link" routerLink="/public">Public</a>{{' '}}
