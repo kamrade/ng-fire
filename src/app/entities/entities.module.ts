@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IconsModule } from '../icons/icons.module';
 
@@ -12,12 +12,27 @@ import { ClientFormComponent } from './client-form/client-form.component';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
+const routes: Routes = [{
+  path: '',
+  component: EntitiesPageComponent,
+  children: [{
+    path: '',
+    redirectTo: 'status',
+    pathMatch: 'full'
+  },{
+    path: ':id',
+    component: EntitiesComponent
+  }]
+}];
+
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     IconsModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [
     EntitiesPageComponent,

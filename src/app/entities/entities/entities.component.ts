@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil, tap, switchMap } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
 import { FiredataService } from 'src/app/core/firedata.service';
-import { ClientsService } from 'src/app/core/clients.service';
+// import { ClientsService } from 'src/app/core/clients.service';
 import { AuthService } from 'src/app/core/auth.service';
 
 import { EntityComplex } from 'src/app/models/entity';

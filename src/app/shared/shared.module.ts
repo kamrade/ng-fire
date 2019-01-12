@@ -10,7 +10,8 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 
 // POSTS
 import { SinglePostComponent } from './single-post/single-post.component';
-import { MyCounterComponent } from './my-counter/my-counter.component';
+
+import { ModalComponent } from 'src/app/core/modal.directive';
 
 @NgModule({
   imports: [
@@ -23,14 +24,14 @@ import { MyCounterComponent } from './my-counter/my-counter.component';
     MainNavigationComponent,
     SwitcherComponent,
     SinglePostComponent,
-    MyCounterComponent
+    ModalComponent,
   ],
   exports: [
     MainNavigationComponent,
     FormsModule,
     SwitcherComponent,
     SinglePostComponent,
-    MyCounterComponent
+    ModalComponent,
   ]
 })
 export class SharedModule { }
