@@ -1,0 +1,41 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { IconsModule } from '../icons/icons.module';
+
+import { EntitiesPageComponent } from './entities-page/entities-page.component';
+import { EntitiesComponent } from './entities/entities.component';
+import { EntityCardComponent } from './entity-card/entity-card.component';
+import { NewEntityComponent } from './new-entity/new-entity.component';
+import { ClientFormComponent } from './client-form/client-form.component';
+import { ClientsListComponent } from './clients-list/clients-list.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+    IconsModule,
+    FormsModule
+  ],
+  declarations: [
+    EntitiesPageComponent,
+    EntitiesComponent,
+    EntityCardComponent,
+    NewEntityComponent,
+    ClientFormComponent,
+    ClientsListComponent,
+    UserDetailsComponent,
+  ],
+  exports: [
+    EntitiesPageComponent,
+    EntitiesComponent,
+    EntityCardComponent,
+    NewEntityComponent,
+    ClientFormComponent,
+    ClientsListComponent,
+    UserDetailsComponent,
+  ]
+})
+export class EntitiesModule { }

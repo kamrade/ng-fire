@@ -5,14 +5,14 @@ import { AuthGuard } from './core/auth.guard';
 
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PublicComponent } from './pages/public/public.component';
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { EntitiesComponent } from './pages/settings/entities/entities.component';
+import { EntitiesComponent } from './entities/entities/entities.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { EntitiesPageComponent } from './entities/entities-page/entities-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,7 +25,7 @@ const routes: Routes = [{
 }, {
   path: 'setting',
   canActivate: [AuthGuard],
-  component: SettingsComponent,
+  component: EntitiesPageComponent,
   children: [{
     path: '',
     redirectTo: 'status',

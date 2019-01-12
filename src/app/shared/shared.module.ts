@@ -8,19 +8,11 @@ import { IconsModule } from '../icons/icons.module';
 import { SwitcherComponent } from './switcher/switcher.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 
-// SETTINGS
-import { NewEntityComponent } from './new-entity/new-entity.component';
-import { EntityCardComponent } from './entity-card/entity-card.component';
-import { ClientsListComponent } from './clients-list/clients-list.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { ClientFormComponent } from './client-form/client-form.component';
-
 // REPORTS
 import { NewReportFormComponent } from './new-report-form/new-report-form.component';
 
 // POSTS
 import { SinglePostComponent } from './single-post/single-post.component';
-// import { ReportListComponent } from './report-list/report-list.component';
 import { ReportsTableComponent } from './reports-table/reports-table.component';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 
@@ -33,30 +25,18 @@ import { MyCounterComponent } from './my-counter/my-counter.component';
   ],
   declarations: [
     MainNavigationComponent,
-    NewEntityComponent,
-    EntityCardComponent,
     SwitcherComponent,
-    ClientsListComponent,
-    UserDetailsComponent,
-    ClientFormComponent,
     NewReportFormComponent,
     SinglePostComponent,
-    // ReportListComponent,
     ReportsTableComponent,
     MyCounterComponent
   ],
   exports: [
     MainNavigationComponent,
-    NewEntityComponent,
-    EntityCardComponent,
     FormsModule,
     SwitcherComponent,
-    ClientsListComponent,
-    UserDetailsComponent,
-    ClientFormComponent,
     NewReportFormComponent,
     SinglePostComponent,
-    // ReportListComponent,
     ReportsTableComponent,
     MyCounterComponent
   ]
