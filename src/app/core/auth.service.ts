@@ -13,7 +13,7 @@ import { User } from './user';
 export class EmailPasswordCredentials {
   email: string;
   password: string;
-  displayName?: string
+  displayName?: string;
 }
 
 @Injectable({

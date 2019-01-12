@@ -1,0 +1,12 @@
+<div class="my-counter">
+  <button class="btn btn-primary" (click)="increment()">
+    <i-chevron-up></i-chevron-up>
+    Increment
+  </button>{{' '}}
+  <div class="counter">Current Count: {{ count$ | async }}</div>
+  <button class="btn btn-secondary" (click)="decrement()">
+    <i-chevron-down></i-chevron-down>
+    Decrement
+  </button>{{' '}}
+  <button class="btn btn-danger" (click)="reset()">Reset Counter</button>{{' '}}
+</div>

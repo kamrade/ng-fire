@@ -22,6 +22,7 @@ import { NewReportFormComponent } from './new-report-form/new-report-form.compon
 import { SinglePostComponent } from './single-post/single-post.component';
 // import { ReportListComponent } from './report-list/report-list.component';
 import { ReportsTableComponent } from './reports-table/reports-table.component';
+import { MyCounterComponent } from './my-counter/my-counter.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { ReportsTableComponent } from './reports-table/reports-table.component';
     NewReportFormComponent,
     SinglePostComponent,
     // ReportListComponent,
-    ReportsTableComponent
+    ReportsTableComponent,
+    MyCounterComponent
   ],
   exports: [
     MainNavigationComponent,
@@ -55,7 +57,8 @@ import { ReportsTableComponent } from './reports-table/reports-table.component';
     NewReportFormComponent,
     SinglePostComponent,
     // ReportListComponent,
-    ReportsTableComponent
+    ReportsTableComponent,
+    MyCounterComponent
   ]
 })
 export class SharedModule { }

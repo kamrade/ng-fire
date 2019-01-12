@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap, switchMap } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { EntityComplex } from 'src/app/models/entity';
   templateUrl: './entities.component.html',
   styleUrls: ['./entities.component.scss']
 })
-export class EntitiesComponent implements OnInit {
+export class EntitiesComponent implements OnInit, OnDestroy {
 
   clientFormShow = false;
   currentRoute = '';
