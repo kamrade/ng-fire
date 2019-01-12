@@ -13,55 +13,69 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EntitiesComponent } from './entities/entities/entities.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { EntitiesPageComponent } from './entities/entities-page/entities-page.component';
+// import { LazyMainComponent } from './lazy/lazy-main/lazy-main.component';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: '/profile',
+  component: DashboardComponent,
   pathMatch: 'full'
 }, {
-  path: 'dashboard',
-  canActivate: [AuthGuard],
-  component: DashboardComponent
-}, {
-  path: 'setting',
-  canActivate: [AuthGuard],
-  component: EntitiesPageComponent,
-  children: [{
-    path: '',
-    redirectTo: 'status',
-    pathMatch: 'full'
-  }, {
-    path: ':id',
-    component: EntitiesComponent
-  }]
-}, {
-  path: 'profile',
-  canActivate: [AuthGuard],
-  component: UserProfileComponent
-}, {
-  path: 'auth',
-  component: AuthComponent,
-  children: [{
-    path: '',
-    redirectTo: 'signin',
-    pathMatch: 'full'
-  }, {
-    path: 'signin',
-    component: SigninPageComponent
-  }, {
-    path: 'signup',
-    component: SignupPageComponent
-  }]
-}, {
-  path: 'public',
-  component: PublicComponent
-}, {
-  path: 'reports',
-  component: ReportsComponent
-}, {
-  path: '**',
-  component: NotFoundComponent
+  path: 'lazy',
+  loadChildren: './lazy/lazy.module#LazyModule'
 }];
+
+// const routes: Routes = [{
+//   path: '',
+//   redirectTo: '/profile',
+//   pathMatch: 'full'
+// }, {
+//   path: 'dashboard',
+//   canActivate: [AuthGuard],
+//   component: DashboardComponent
+// }, {
+//   path: 'setting',
+//   canActivate: [AuthGuard],
+//   component: EntitiesPageComponent,
+//   children: [{
+//     path: '',
+//     redirectTo: 'status',
+//     pathMatch: 'full'
+//   }, {
+//     path: ':id',
+//     component: EntitiesComponent
+//   }]
+// }, {
+//   path: 'profile',
+//   canActivate: [AuthGuard],
+//   component: UserProfileComponent
+// }, {
+//   path: 'auth',
+//   component: AuthComponent,
+//   children: [{
+//     path: '',
+//     redirectTo: 'signin',
+//     pathMatch: 'full'
+//   }, {
+//     path: 'signin',
+//     component: SigninPageComponent
+//   }, {
+//     path: 'signup',
+//     component: SignupPageComponent
+//   }]
+// }, {
+//   path: 'public',
+//   component: PublicComponent
+// }, {
+//   path: 'reports',
+//   component: ReportsComponent
+// }, {
+//   path: 'lazy',
+//   pathMatch: 'full',
+//   component: LazyMainComponent
+// },{
+//   path: '**',
+//   component: NotFoundComponent
+// }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
