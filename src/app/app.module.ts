@@ -22,7 +22,6 @@ import { PublicComponent } from './pages/public/public.component';
 
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +29,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AuthComponent,
     PublicComponent,
     SigninPageComponent,
-    SignupPageComponent,
-    NotFoundComponent
+    SignupPageComponent
   ],
   imports: [
-    StoreModule.forRoot({ count: counterReducer }),
+    // StoreModule.forRoot({ count: counterReducer }),
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
@@ -42,7 +40,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     SharedModule,
     EntitiesModule,
     IconsModule,
-    StoreModule.forRoot({ count: counterReducer }),
+    // StoreModule.forRoot({ count: counterReducer }),
+    StoreModule.forRoot({ }),
     StoreDevtoolsModule.instrument({
       name: 'NG Fire App Devtools',
       maxAge: 25,

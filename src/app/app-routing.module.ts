@@ -7,7 +7,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { PublicComponent } from './pages/public/public.component';
 import { SigninPageComponent } from './pages/auth/signin-page/signin-page.component';
 import { SignupPageComponent } from './pages/auth/signup-page/signup-page.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,37 +30,29 @@ const routes: Routes = [{
   path: 'profile',
   canActivate: [AuthGuard],
   loadChildren: './profile/profile.module#ProfileModule'
-}];
+}, {
 
-// const routes: Routes = [{
-//   path: '',
-//   redirectTo: '/profile',
-//   pathMatch: 'full'
-// }, {
-//   path: 'dashboard',
-//   canActivate: [AuthGuard],
-//   component: DashboardComponent
-// }, {
-//   path: 'auth',
-//   component: AuthComponent,
-//   children: [{
-//     path: '',
-//     redirectTo: 'signin',
-//     pathMatch: 'full'
-//   }, {
-//     path: 'signin',
-//     component: SigninPageComponent
-//   }, {
-//     path: 'signup',
-//     component: SignupPageComponent
-//   }]
-// }, {
-//   path: 'public',
-//   component: PublicComponent
-// },{
-//   path: '**',
-//   component: NotFoundComponent
-// }];
+  path: 'auth',
+  component: AuthComponent,
+  children: [{
+    path: '',
+    redirectTo: 'signin',
+    pathMatch: 'full'
+  }, {
+    path: 'signin',
+    component: SigninPageComponent
+  }, {
+    path: 'signup',
+    component: SignupPageComponent
+  }]
+}, {
+  path: 'public',
+  canActivate: [AuthGuard],
+  component: PublicComponent
+}, {
+  path: '**',
+  component: NotFoundPageComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

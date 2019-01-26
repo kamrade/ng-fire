@@ -7,6 +7,7 @@ import { IconsModule } from '../icons/icons.module';
 // LIB
 import { SwitcherComponent } from './switcher/switcher.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 // POSTS
 import { SinglePostComponent } from './single-post/single-post.component';
@@ -25,6 +26,7 @@ import { ModalComponent } from 'src/app/core/modal.directive';
     SwitcherComponent,
     SinglePostComponent,
     ModalComponent,
+    NotFoundPageComponent
   ],
   exports: [
     MainNavigationComponent,
@@ -32,6 +34,7 @@ import { ModalComponent } from 'src/app/core/modal.directive';
     SwitcherComponent,
     SinglePostComponent,
     ModalComponent,
+    NotFoundPageComponent
   ]
 })
 export class SharedModule { }

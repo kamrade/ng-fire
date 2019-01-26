@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+
+import { reducers } from './store';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { IconsModule } from 'src/app/icons/icons.module';
@@ -23,7 +26,8 @@ const routes: Routes = [{
     CommonModule,
     SharedModule,
     IconsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('dashboard_counter', reducers)
   ]
 })
 export class DashboardModule { }
