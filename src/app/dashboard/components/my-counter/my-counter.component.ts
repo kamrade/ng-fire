@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from 'src/app/dashboard/store/actions/counter.action';
+// import { Increment, Decrement, Reset } from 'src/app/dashboard/store/actions/counter.action';
+
+import * as fromStore from 'src/app/dashboard/store/actions/counter.action';
 
 @Component({
   selector: 'app-my-counter',
@@ -15,19 +17,18 @@ export class MyCounterComponent implements OnInit {
   constructor(private store: Store<{ count: number }>) {
     // TODO: unsubscribe?
     this.count$ = store.pipe( select('dashboard_counter') );
-    // this.count$.subscribe(item => console.log(item));
   }
 
   increment() {
-    this.store.dispatch(new Increment());
+    this.store.dispatch(new fromStore.Increment());
   }
 
   decrement() {
-    this.store.dispatch(new Decrement());
+    this.store.dispatch(new fromStore.Decrement());
   }
 
   reset() {
-    this.store.dispatch(new Reset());
+    this.store.dispatch(new fromStore.Reset());
   }
 
   ngOnInit() {
