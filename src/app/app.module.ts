@@ -6,7 +6,6 @@ import { environment } from '../environments/environment';
 // REDUX THINGS
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { counterReducer } from './reducers/counter.reducer';
 
 // MODULES
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +31,6 @@ import { SignupPageComponent } from './pages/auth/signup-page/signup-page.compon
     SignupPageComponent
   ],
   imports: [
-    // StoreModule.forRoot({ count: counterReducer }),
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
@@ -40,7 +38,6 @@ import { SignupPageComponent } from './pages/auth/signup-page/signup-page.compon
     SharedModule,
     EntitiesModule,
     IconsModule,
-    // StoreModule.forRoot({ count: counterReducer }),
     StoreModule.forRoot({ }),
     StoreDevtoolsModule.instrument({
       name: 'NG Fire App Devtools',

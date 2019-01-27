@@ -8,6 +8,11 @@
 
 <ng-template #authenticated>
   <div class="card-user-details" *ngIf="auth.user | async as user">
+
+    <div *ngIf="count$ | async; let count" class="counter">
+      Current Count: {{ count.counter }}
+    </div>
+
     <h3>{{ user.displayName }}</h3>
     <p><i-user class="pr-1"></i-user>UID: {{ user.uid || '' }}</p>
     <hr />

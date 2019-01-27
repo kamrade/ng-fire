@@ -8,8 +8,8 @@ import { reducers } from './store';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { IconsModule } from 'src/app/icons/icons.module';
 
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { MyCounterComponent } from './my-counter/my-counter.component';
+import { DashboardPageComponent } from './containers/dashboard-page/dashboard-page.component';
+import { MyCounterComponent } from './components/my-counter/my-counter.component';
 
 const routes: Routes = [{
   path: '',

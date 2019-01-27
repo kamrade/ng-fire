@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { IconsModule } from '../icons/icons.module';
+import { IconsModule } from 'src/app/icons/icons.module';
 
-import { EntitiesPageComponent } from './entities-page/entities-page.component';
-import { EntitiesComponent } from './entities/entities.component';
-import { EntityCardComponent } from './entity-card/entity-card.component';
-import { NewEntityComponent } from './new-entity/new-entity.component';
-import { ClientFormComponent } from './client-form/client-form.component';
-import { ClientsListComponent } from './clients-list/clients-list.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
+import { EntitiesPageComponent } from './containers/entities-page/entities-page.component';
+
+import { EntitiesComponent } from './components/entities/entities.component';
+import { EntityCardComponent } from './components/entity-card/entity-card.component';
+import { NewEntityComponent } from './components/new-entity/new-entity.component';
+import { ClientFormComponent } from './components/client-form/client-form.component';
+import { ClientsListComponent } from './components/clients-list/clients-list.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 const routes: Routes = [{
   path: '',

@@ -70,7 +70,7 @@ export class FiredataService {
 
   }
 
-  // CRUD
+  // GET ALL ITEMS INCLUDING THE ID
   public getItemsWithIDs$(ref: AngularFirestoreCollection): Observable<any[]> {
     return ref.snapshotChanges()
       .pipe(
