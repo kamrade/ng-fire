@@ -37,7 +37,7 @@ export class FiredataService {
   // NEW
   public getEntity(entityType: string) {
     let ref: AngularFirestoreCollection<Entity>;
-    switch(entityType) {
+    switch (entityType) {
       case 'status':
         ref = this.staCol;
         break;
@@ -72,6 +72,7 @@ export class FiredataService {
 
   // GET ALL ITEMS INCLUDING THE ID
   public getItemsWithIDs$(ref: AngularFirestoreCollection): Observable<any[]> {
+    console.log('::: get items with ids');
     return ref.snapshotChanges()
       .pipe(
         map(actions => {
@@ -86,7 +87,7 @@ export class FiredataService {
 
   // HELPER
   private setEntityCollection(entityType: string): AngularFirestoreCollection<DocumentData> {
-    switch(entityType) {
+    switch (entityType) {
       case 'status':
         return this.staCol;
       case 'region':
@@ -126,22 +127,22 @@ export class FiredataService {
   }
 
   // POSTS
-  public async postDelete$(itemId:string): Promise<any> {
+  public async postDelete$(itemId: string): Promise<any> {
     return this.postsCollection.doc(itemId).delete()
       .then(() => console.log(':: post removed'))
       .catch(err => console.log(':: post remove error', err));
   }
 
-  public async postUpdate$(itemId:string, data: any): Promise<any> {
+  public async postUpdate$(itemId: string, data: any): Promise<any> {
     return this.postsCollection.doc(itemId).update(data)
       .then(() => console.log(':: post updated'))
       .catch(err => console.log(':: post update error', err));
   }
 
-  public async postCreate$(itemData:Post): Promise<any> {
+  public async postCreate$(itemData: Post): Promise<any> {
     return this.postsCollection.add(itemData)
-      .then(() => { console.log(':: post created') })
-      .catch(err => { console.log(':: post remove error', err) });
+      .then(() => { console.log(':: post created'); })
+      .catch(err => { console.log(':: post remove error', err); });
   }
 
 
