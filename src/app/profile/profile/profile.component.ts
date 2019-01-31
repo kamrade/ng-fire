@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
     //   console.log(state);
     // });
     this.statuses$ = this.store.pipe( select<any>( fromCoreStore.getStatuses ) );
+    this.store.dispatch(new fromCoreStore.LoadStatuses());
   }
 
 }

@@ -77,7 +77,7 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
       //   this.firedataService.getEntity('equipment')
       // ),
       tap(data => {
-        console.log('update', data);
+        // console.log('update', data);
         this.collectedReports = [];
         this.reports.map(report => {
           this.collectedReports.push({
@@ -103,7 +103,7 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
       })
     )
     combined.subscribe(
-      () => console.log('OK'),
+      () => { /* console.log('OK') */ },
       err => console.log('ERR', err),
       () => console.log('COMPLETED')
     );

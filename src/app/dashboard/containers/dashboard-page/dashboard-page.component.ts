@@ -22,7 +22,7 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit() {
     this.firedataService.getEntity('status')
-      .subscribe(st => console.log("statuses:", st));
+      .subscribe(st => { /* console.log("statuses:", st) */});
   }
 
   openModal(id: string) {

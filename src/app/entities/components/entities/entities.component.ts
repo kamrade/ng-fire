@@ -35,7 +35,7 @@ export class EntitiesComponent implements OnInit, OnDestroy {
   }
 
   getEntities(value): Observable<EntityComplex[]> {
-    switch(value) {
+    switch (value) {
       case 'status':
         return this.firedataService.getEntity('status');
       case 'region':
