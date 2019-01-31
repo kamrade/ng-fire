@@ -26,7 +26,7 @@ import { ClientsService } from './clients.service';
     RouterModule.forChild([]),
     StoreModule.forFeature('core', reducers),
     HttpClientModule,
-    EffectsModule.forFeature(effects)
+    EffectsModule.forRoot(effects)
   ],
   exports: [],
   providers: [AuthService, ModalService, FiredataService, ClientsService],
