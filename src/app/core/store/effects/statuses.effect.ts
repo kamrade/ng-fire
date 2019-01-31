@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 
 import * as statusesActions from 'src/app/core/store/actions/statuses.action';
@@ -13,12 +14,16 @@ export class StatusesEffects {
     private firedataService: FiredataService
   ) {}
 
-  @Effect()
+  @Effect({ dispatch: true })
   loadStatuses$ = this.actions$
-    .pipe(ofType(statusesActions.ActionTypes.LoadStatuses))
-    .pipe(switchMap(() => {
-      return this.firedataService.getEntity('status').pipe(
-        map(statuses => new statusesActions.LoadStatusesSuccess(statuses))
-      );
-    }));
+    .pipe(
+      ofType(statusesActions.ActionTypes.LoadStatuses)
+    )
+    .pipe(
+      switchMap(() => {
+        return this.firedataService.getEntity('status').pipe(
+          map(statuses => new statusesActions.LoadStatusesSuccess(statuses)),
+          catchError(error => of(new statusesActions.LoadStatusesFail(error)))
+        );
+      }));
 }

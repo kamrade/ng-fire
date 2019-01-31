@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { reducers, effects } from './store';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -18,15 +20,16 @@ import { ClientsService } from './clients.service';
 @NgModule({
   imports: [
     CommonModule,
-    AngularFirestoreModule,   // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule,    // imports firebase/auth, only needed for auth features,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     RouterModule.forChild([]),
     StoreModule.forFeature('core', reducers),
-    HttpClientModule
+    HttpClientModule,
+    EffectsModule.forFeature(effects)
   ],
-  exports: [ ],
+  exports: [],
   providers: [AuthService, ModalService, FiredataService, ClientsService],
   declarations: []
 })
-export class CoreModule { }
+export class CoreModule {}
