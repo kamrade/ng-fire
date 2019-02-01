@@ -8,21 +8,7 @@ export interface StatusesState {
 }
 
 export const initialState: StatusesState = {
-  data:    [{
-    id: 'completed',
-    data: {
-      title: 'Completed',
-      abbr: 'cpl',
-      description: 'Finished, done'
-    }
-  }, {
-    id: 'on_hold',
-    data: {
-      title: 'On hold',
-      abbr: 'hld',
-      description: ''
-    }
-  }],
+  data:    [],
   loaded:  false,
   loading: false
 };
@@ -42,10 +28,12 @@ export function reducer(
     }
 
     case fromStatuses.ActionTypes.LoadStatusesSuccess: {
+      const data = action.payload;
       return {
         ...state,
         loading: false,
-        loaded:  true
+        loaded:  true,
+        data
       };
     }
 

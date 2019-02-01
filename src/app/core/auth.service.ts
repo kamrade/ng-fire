@@ -153,7 +153,9 @@ export class AuthService {
 
   // determines if user has matching
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
-    if (!user) return false;
+    if (!user) {
+      return false;
+    }
     for (const role of allowedRoles) {
       if (user.roles[role]) {
         return true;

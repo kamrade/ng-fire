@@ -34,7 +34,6 @@ export class FiredataService {
     this.equCol = this.afs.collection('ent_equipment', ref => ref);
   }
 
-  // NEW
   public getEntity(entityType: string) {
     let ref: AngularFirestoreCollection<Entity>;
     switch (entityType) {
