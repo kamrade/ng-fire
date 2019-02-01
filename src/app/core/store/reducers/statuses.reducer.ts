@@ -29,6 +29,7 @@ export function reducer(
 
     case fromStatuses.ActionTypes.LoadStatusesSuccess: {
       const data = action.payload;
+      console.log(data);
       return {
         ...state,
         loading: false,

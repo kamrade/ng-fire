@@ -13,9 +13,9 @@
       Current Count: {{ count.counter }}
     </div>
 
-    <div *ngIf="!((statuses$ | async)?.length)">
+    <!-- <div *ngIf="!((statuses$ | async)?.length)">
       There is no statuses added
-    </div>
+    </div> -->
 
     <div
         *ngFor="let status of (statuses$ | async)"
