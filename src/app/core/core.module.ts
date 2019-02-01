@@ -16,6 +16,7 @@ import { AuthService } from './auth.service';
 import { FiredataService } from './firedata.service';
 import { ModalService } from './modal.service';
 import { ClientsService } from './clients.service';
+import { CatalogueService } from './services/catalogue.service';
 
 @NgModule({
   imports: [
@@ -29,7 +30,13 @@ import { ClientsService } from './clients.service';
     EffectsModule.forRoot(effects)
   ],
   exports: [],
-  providers: [AuthService, ModalService, FiredataService, ClientsService],
+  providers: [
+    AuthService,
+    ModalService,
+    FiredataService,
+    ClientsService,
+    CatalogueService
+  ],
   declarations: []
 })
 export class CoreModule {}
