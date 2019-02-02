@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ClientsService } from 'src/app/core/clients.service';
-import { AuthService } from 'src/app/core/auth.service';
+import { AuthService } from 'src/app/core/services';
 
 import { Client } from 'src/app/core/client';
 
@@ -35,7 +35,7 @@ export class ClientFormComponent implements OnInit {
   create(f) {
     console.log(':: creating form');
     const data = f.value;
-    
+
     let clientObject: Client = {
       address: {
         zipCode: data.zipCode,

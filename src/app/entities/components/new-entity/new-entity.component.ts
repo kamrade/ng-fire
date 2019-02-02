@@ -9,7 +9,7 @@ export class NewEntityComponent implements OnInit {
 
   mode: 'simple' | 'creation' = 'simple';
 
-  @Output() onCreate = new EventEmitter<any>();
+  @Output() createEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -24,8 +24,8 @@ export class NewEntityComponent implements OnInit {
     this.mode = 'creation';
   }
 
-  create(f) {
-    this.onCreate.emit(f);
+  create(f: any) {
+    this.createEvent.emit(f);
     f.reset();
     this.simpleMode();
   }

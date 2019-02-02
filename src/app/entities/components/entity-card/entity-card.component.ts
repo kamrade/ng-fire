@@ -9,8 +9,8 @@ export class EntityCardComponent implements OnInit {
 
   mode: 'view' | 'edit' = 'view';
 
-  @Output() onDelete = new EventEmitter<any>();
-  @Output() onChange = new EventEmitter<any>();
+  @Output() deleteEvent = new EventEmitter<any>();
+  @Output() changeEvent = new EventEmitter<any>();
 
   @Input()
   data: any;
@@ -40,11 +40,11 @@ export class EntityCardComponent implements OnInit {
   }
 
   delete(id) {
-    this.onDelete.emit(id);
+    this.deleteEvent.emit(id);
   }
 
   update() {
-    this.onChange.emit(this.formData);
+    this.changeEvent.emit(this.formData);
     this.viewMode();
   }
 

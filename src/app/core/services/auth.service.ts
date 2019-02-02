@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { User } from './user';
+import { User } from '../user';
 
 export class EmailPasswordCredentials {
   email: string;

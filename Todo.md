@@ -13,3 +13,6 @@
 - Popup dialogs
 - Switcher
 - Tables
+
+## Further features
+- MessageService

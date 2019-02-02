@@ -3,9 +3,9 @@ import { Observable, Subject, iif, of, zip as zzip } from 'rxjs';
 import { takeUntil, filter, tap, switchMap, map, zip } from 'rxjs/operators';
 
 // SERVICES
-import { AuthService } from 'src/app/core/auth.service';
-import { ReportsService } from 'src/app/core/reports.service';
-import { FiredataService } from 'src/app/core/firedata.service';
+import { AuthService } from 'src/app/core/services';
+import { ReportsService } from 'src/app/core/services';
+import { FiredataService } from 'src/app/core/services';
 
 // CLASSES & INTERFACES
 import { ReportComplex, reportColumns } from 'src/app/models/report';
@@ -98,10 +98,10 @@ export class ReportsTableComponent implements OnInit, OnDestroy {
             // facilityTitle: allData[5].find(el => el.id === report.data.facility).data.title,
             // equipmentTitle: allData[6].find(el => el.id === report.data.equipment).data.title,
 
-          })
-        })
+          });
+        });
       })
-    )
+    );
     combined.subscribe(
       () => { /* console.log('OK') */ },
       err => console.log('ERR', err),

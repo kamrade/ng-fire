@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { FiredataService } from 'src/app/core/firedata.service';
-import { AuthService } from 'src/app/core/auth.service';
+import { FiredataService } from 'src/app/core/services';
+import { AuthService } from 'src/app/core/services';
 import { ClientsService } from 'src/app/core/clients.service';
-import { ReportsService } from 'src/app/core/reports.service';
+import { ReportsService } from 'src/app/core/services';
 
 import { EntityComplex } from 'src/app/models/entity';
 import { User } from 'src/app/core/user';
@@ -70,7 +70,7 @@ export class NewReportFormComponent implements OnInit {
   confirmForm(e, f) {
     e.preventDefault();
 
-    let reportData: Report = {
+    const reportData: Report = {
       ...f.value,
       createdAt: Date.now(),
       updatedAt: Date.now(),

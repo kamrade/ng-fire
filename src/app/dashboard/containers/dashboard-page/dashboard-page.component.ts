@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EntityComplex } from 'src/app/models/entity';
 
 import { ModalService } from 'src/app/core/modal.service';
-import { FiredataService } from 'src/app/core/firedata.service';
+import { FiredataService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-dashboard-page',

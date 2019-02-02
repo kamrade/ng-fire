@@ -3,10 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
-import { FiredataService } from 'src/app/core/firedata.service';
+import { FiredataService } from 'src/app/core/services';
 // import { ClientsService } from 'src/app/core/clients.service';
-import { AuthService } from 'src/app/core/auth.service';
-
+import { AuthService } from 'src/app/core/services';
 import { EntityComplex } from 'src/app/models/entity';
 
 @Component({
@@ -34,7 +33,7 @@ export class EntitiesComponent implements OnInit, OnDestroy {
       ).subscribe((value) => this.data = this.getEntities(this.currentRoute));
   }
 
-  getEntities(value): Observable<EntityComplex[]> {
+  getEntities(value: any): Observable<EntityComplex[]> {
     switch (value) {
       case 'status':
         return this.firedataService.getEntity('status');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AuthService } from './core/auth.service';
+import { AuthService } from 'src/app/core/services';
 
 import * as fromCoreStore from 'src/app/core/store';
 import { EntityComplex } from 'src/app/models/entity';

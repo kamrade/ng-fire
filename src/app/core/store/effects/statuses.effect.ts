@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 
 import * as statusesActions from 'src/app/core/store/actions/statuses.action';
-import { FiredataService } from 'src/app/core/firedata.service';
+import { FiredataService } from 'src/app/core/services';
 
 @Injectable()
 export class StatusesEffects {

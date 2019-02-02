@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Post } from '../../core/post';
+import { Post } from 'src/app/core/post';
 
-import { FiredataService } from '../../core/firedata.service';
-import { AuthService } from '../../core/auth.service';
+import { FiredataService } from 'src/app/core/services';
+import { AuthService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-public',
@@ -22,17 +22,17 @@ export class PublicComponent implements OnInit {
 
   ngOnInit() {
     const userObject: any = this.auth.user;
-    userObject.subscribe(u => {
+    userObject.subscribe((u: any) => {
       if (u) {
         this.userID = u.uid;
         this.userDisplayName = u.displayName;
       } else {
-        console.log(":: not authenticated");
+        console.log(':: not authenticated');
       }
     });
   }
 
-  submitNewPost(event, f:NgForm) {
+  submitNewPost(event: any, f: NgForm) {
     event.preventDefault();
     const formContent: Post = f.value;
     const createdAt = Date.now();

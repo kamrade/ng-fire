@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Entity, EntityComplex } from 'src/app/models/entity';
-import { Post, PostComplex } from './post';
+import { Post, PostComplex } from '../post';
 
 @Injectable({
   providedIn: 'root'

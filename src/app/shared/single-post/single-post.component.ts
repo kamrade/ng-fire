@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { FiredataService } from 'src/app/core/firedata.service';
+import { FiredataService } from 'src/app/core/services';
 import { Post, PostComplex } from 'src/app/core/post';
 
 @Component({

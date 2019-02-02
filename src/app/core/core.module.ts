@@ -12,8 +12,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { AuthService } from './auth.service';
-import { FiredataService } from './firedata.service';
+import { AuthService } from './services';
+import { FiredataService } from './services';
 import { ModalService } from './modal.service';
 import { ClientsService } from './clients.service';
 

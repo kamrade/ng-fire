@@ -4,14 +4,14 @@
       <div class="col-md-6 col-lg-4" *ngFor="let d of data | async">
 
         <app-entity-card
-          (onChange)="updateEntity($event)"
-          (onDelete)="deleteEntity($event)"
+          (changeEvent)="updateEntity($event)"
+          (deleteEvent)="deleteEntity($event)"
           [data]="d"></app-entity-card>
 
       </div>
       <div class="col-md-6 col-lg-4">
 
-        <app-new-entity (onCreate)="createEntity($event)"></app-new-entity>
+        <app-new-entity (createEvent)="createEntity($event)"></app-new-entity>
 
       </div>
     </div>
