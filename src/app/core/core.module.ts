@@ -16,7 +16,6 @@ import { AuthService } from './auth.service';
 import { FiredataService } from './firedata.service';
 import { ModalService } from './modal.service';
 import { ClientsService } from './clients.service';
-import { CatalogueService } from './services/catalogue.service';
 
 @NgModule({
   imports: [
@@ -34,8 +33,7 @@ import { CatalogueService } from './services/catalogue.service';
     AuthService,
     ModalService,
     FiredataService,
-    ClientsService,
-    CatalogueService
+    ClientsService
   ],
   declarations: []
 })

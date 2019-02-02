@@ -67,11 +67,11 @@ export class AuthService {
   emailSignIn(credentials: EmailPasswordCredentials): any {
     return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
-        console.log(':: logged in')
+        console.log(':: logged in');
       })
       .catch((err) => {
-        let errCode = err.code;
-        let errMessage = err.message;
+        const errCode = err.code;
+        const errMessage = err.message;
         if (errCode === 'auth/wrong-password') {
           alert('Wrong password.');
         } else {
@@ -93,18 +93,18 @@ export class AuthService {
 
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.oAuthLogin(provider)
+    return this.oAuthLogin(provider);
   }
 
   private oAuthLogin(provider): any {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
-      })
+      });
   }
 
   // add user to firestore database
-  private updateUserData(user): any {
+  private updateUserData(user: any): any {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     // try to get User with this ID.
@@ -124,7 +124,7 @@ export class AuthService {
             },
             displayName: user.displayName || user.email,
             photoURL: user.photoURL
-          }
+          };
 
           return userRef.set(data, { merge: true });
         }
@@ -133,19 +133,19 @@ export class AuthService {
       });
   }
 
-  // unuse
+  // unused
   canRead(user: User): boolean {
     const allowed = ['admin', 'editor', 'subscriber'];
     return this.checkAuthorization(user, allowed);
   }
 
-  // unuse
+  // unused
   canEdit(user: User): boolean {
     const allowed = ['admin', 'editor'];
     return this.checkAuthorization(user, allowed);
   }
 
-  // unuse
+  // unused
   canDelete(user: User): boolean {
     const allowed = ['admin'];
     return this.checkAuthorization(user, allowed);
