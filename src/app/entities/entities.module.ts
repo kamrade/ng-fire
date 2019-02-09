@@ -20,7 +20,7 @@ const routes: Routes = [{
     path: '',
     redirectTo: 'status',
     pathMatch: 'full'
-  },{
+  }, {
     path: ':id',
     component: EntitiesComponent
   }]

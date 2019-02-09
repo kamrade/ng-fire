@@ -1,0 +1,36 @@
+@import "variables";
+
+:host {
+  display: block;
+}
+
+.page-catalog {
+  display: flex;
+}
+
+.catalog-navigation {
+  width: 240px;
+  ul {
+    list-style: none;
+    .link {
+      padding: $spacer/2 0;
+
+      &.active-link {
+        color: $gray-900;
+        text-decoration: none;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
+}
+
+.catalog-content-wrapper {
+  margin-left: $spacer;
+  background-color: $gray-100;
+  padding: $spacer;
+  border-radius: $border-radius;
+  flex-grow: 3;
+}

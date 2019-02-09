@@ -15,13 +15,13 @@ const routes: Routes = [{
   loadChildren: './dashboard/dashboard.module#DashboardModule',
   pathMatch: 'full'
 }, {
-  path: 'lazy',
-  canActivate: [AuthGuard],
-  loadChildren: './lazy/lazy.module#LazyModule'
-}, {
   path: 'reports',
   canActivate: [AuthGuard],
   loadChildren: './reports/reports.module#ReportsModule'
+}, {
+  path: 'catalog',
+  canActivate: [AuthGuard],
+  loadChildren: './catalog/catalog.module#CatalogModule'
 }, {
   path: 'setting',
   canActivate: [AuthGuard],
