@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot } from '
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Client, ClientComplex } from './client';
+import { Client, ClientComplex } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,8 @@ export class ClientsService {
 
   public async create$(clientData: Client): Promise<any> {
     return this.clientsCollection.add(clientData)
-      .then(() => { console.log(':: client created') })
-      .catch(err => { console.log(':: error create client', err) });
+      .then(() => { console.log(':: client created'); })
+      .catch(err => { console.log(':: error create client', err); });
   }
 
   public getClientsWithIDs$<T>(ref: AngularFirestoreCollection<T>): Observable<any> {
@@ -38,7 +38,7 @@ export class ClientsService {
           return {
             data: a.payload.doc.data(),
             id: a.payload.doc.id
-          }
+          };
         });
       }));
   }

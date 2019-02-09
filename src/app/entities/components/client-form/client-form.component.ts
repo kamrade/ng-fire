@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ClientsService } from 'src/app/core/clients.service';
+import { ClientsService } from 'src/app/core/services';
 import { AuthService } from 'src/app/core/services';
 
-import { Client } from 'src/app/core/client';
+import { Client } from 'src/app/core/models';
 
 @Component({
   selector: 'app-client-form',

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { FiredataService } from 'src/app/core/services';
 import { AuthService } from 'src/app/core/services';
-import { ClientsService } from 'src/app/core/clients.service';
+import { ClientsService } from 'src/app/core/services';
 import { ReportsService } from 'src/app/core/services';
 
 import { EntityComplex } from 'src/app/models/entity';

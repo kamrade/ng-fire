@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ClientsService } from 'src/app/core/clients.service';
+import { ClientsService } from 'src/app/core/services';
 
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { ClientComplex } from 'src/app/core/client';
+import { ClientComplex } from 'src/app/core/models';
 
 @Component({
   selector: 'app-clients-list',

@@ -15,7 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services';
 import { FiredataService } from './services';
 import { ModalService } from './modal.service';
-import { ClientsService } from './clients.service';
+import { ClientsService } from './services';
 
 @NgModule({
   imports: [

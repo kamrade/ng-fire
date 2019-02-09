@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Entity, EntityComplex } from 'src/app/models/entity';
-import { Post, PostComplex } from '../post';
+import { Post, PostComplex } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -107,8 +107,8 @@ export class FiredataService {
   public async create$(itemData: Entity, entityType: string): Promise<any> {
     const ref = this.setEntityCollection(entityType);
     return ref.add(itemData)
-      .then(() => { console.log(':: item created') })
-      .catch(err => { console.log(':: item remove error', err) });
+      .then(() => { console.log(':: item created'); })
+      .catch(err => { console.log(':: item remove error', err); });
   }
 
   public async delete$(itemId: string, entityType: string): Promise<any> {

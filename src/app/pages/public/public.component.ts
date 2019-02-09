@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Post } from 'src/app/core/post';
+import { Post } from 'src/app/core/models';
 
 import { FiredataService } from 'src/app/core/services';
 import { AuthService } from 'src/app/core/services';

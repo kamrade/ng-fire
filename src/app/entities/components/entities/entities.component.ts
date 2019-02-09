@@ -4,7 +4,6 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { FiredataService } from 'src/app/core/services';
-// import { ClientsService } from 'src/app/core/clients.service';
 import { AuthService } from 'src/app/core/services';
 import { EntityComplex } from 'src/app/models/entity';
 
@@ -53,7 +52,7 @@ export class EntitiesComponent implements OnInit, OnDestroy {
   }
 
   createEntity(data) {
-    console.log(`:: creating ${this.currentRoute}...`)
+    console.log(`:: creating ${this.currentRoute}...`);
     this.firedataService.create$({
       ...data.value
     }, this.currentRoute);
