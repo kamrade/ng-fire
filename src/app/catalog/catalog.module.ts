@@ -10,6 +10,8 @@ import { CatalogPageComponent } from './containers/catalog-page/catalog-page.com
 import { CatalogContentComponent } from './containers/catalog-content/catalog-content.component';
 import { ReactiveFormTestComponent } from './components/reactive-form-test/reactive-form-test.component';
 import { ReactiveFormsValidateComponent } from './components/reactive-forms-validate/reactive-forms-validate.component';
+import { ClientsBlockComponent } from './components/clients-block/clients-block.component';
+import { NewClientFormComponent } from './components/new-client-form/new-client-form.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,7 +31,9 @@ const routes: Routes = [{
     CatalogPageComponent,
     CatalogContentComponent,
     ReactiveFormTestComponent,
-    ReactiveFormsValidateComponent
+    ReactiveFormsValidateComponent,
+    ClientsBlockComponent,
+    NewClientFormComponent
   ],
   imports: [
     CommonModule,

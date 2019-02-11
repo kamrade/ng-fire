@@ -27,7 +27,7 @@ export class ReactiveFormsValidateComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.min(18),
-        Validators.min(65),
+        Validators.max(65),
       ]],
       agree: [false, [
         Validators.requiredTrue

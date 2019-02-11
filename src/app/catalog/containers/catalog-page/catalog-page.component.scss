@@ -10,28 +10,46 @@
 
 .catalog-navigation {
   width: 240px;
+
   ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
+
     .link {
-      padding: $spacer/2 0;
-      color: $gray-900;
+      font-size: 1rem;
+      line-height: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      color: $gray-600;
+      margin-bottom: $spacer*2;
+      transition: $transition-base;
+
+      &:hover {
+        color: $gray-900;
+        text-decoration: none;
+      }
 
       &.active-link {
         color: $primary;
         text-decoration: none;
+
         &:hover {
           text-decoration: none;
         }
       }
 
     }
+
+    hr {
+      margin-top: 0;
+      margin-bottom: 2*$spacer;
+    }
   }
 }
 
 .catalog-content-wrapper {
   margin-left: $spacer;
-  background-color: $gray-100;
-  padding: $spacer;
-  border-radius: $border-radius;
   flex-grow: 3;
 }

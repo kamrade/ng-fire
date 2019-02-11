@@ -20,6 +20,17 @@
           </div>
         </div>
 
+        <div class="form-group">
+          <input type="text" class="form-control"
+            [value]="0" formControlName="age" />
+          <div class="text-danger" *ngIf="age.errors?.min && age.touched">
+            <small>{{age.errors.min.actual}} is young to use this app kiddo!</small>
+          </div>
+          <div class="text-danger" *ngIf="age.errors?.max && age.touched">
+            <small>{{age.errors.max.actual}} is too old to use this app gramps!</small>
+          </div>
+        </div>
+
       </form>
 
 

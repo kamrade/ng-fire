@@ -1,9 +1,15 @@
 <div class="catalog-content">
 
   <div *ngIf="currentRoute==='clients'">
+    <div class="mb-3">
+      <app-clients-block></app-clients-block>
+    </div>
+  </div>
+
+  <div *ngIf="currentRoute==='settings'">
+    <h4>Test</h4>
     <div class="mb-3"><app-reactive-form-test></app-reactive-form-test></div>
     <div class="mb-3"><app-reactive-forms-validate></app-reactive-forms-validate></div>
-    Clients list...
   </div>
 
 </div>
