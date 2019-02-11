@@ -14,9 +14,10 @@
     list-style: none;
     .link {
       padding: $spacer/2 0;
+      color: $gray-900;
 
       &.active-link {
-        color: $gray-900;
+        color: $primary;
         text-decoration: none;
         &:hover {
           text-decoration: none;

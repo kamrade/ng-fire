@@ -1,0 +1,31 @@
+<button class="btn btn-primary mr-2"
+  (click)="openModal('modal-dialog-reactive-form-validate')">
+    Reactive forms validate</button>
+
+
+<modal id="modal-dialog-reactive-form-validate">
+  <div class="modal">
+    <div class="modal-body">
+      <h4>Reactive forms validate</h4>
+
+      <form [formGroup]="myForm">
+        <div class="my-3 p-3" [ngStyle]="{'background-color': '#f4f7f9'}">{{myForm.value | json}}</div>
+        <hr/>
+
+        <div class="form-group" [ngClass]="{'was-validated': email.invalid && email.touched}">
+          <input type="text" class="form-control"
+            placeholder="email" formControlName="email" autocomplete="false">
+          <div class="text-danger" *ngIf="email.invalid && email.touched">
+            <small>Please provide valid email</small>
+          </div>
+        </div>
+
+      </form>
+
+
+      <button class="btn btn-primary align-top"
+      (click)="closeModal('modal-dialog-reactive-form-validate')">Close</button>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</modal>

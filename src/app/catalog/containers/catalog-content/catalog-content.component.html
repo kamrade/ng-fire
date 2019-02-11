@@ -1,3 +1,19 @@
-<p>
-  catalog-content works!
-</p>
+<div class="catalog-content">
+
+  <div *ngIf="currentRoute==='clients'">
+    <div class="mb-3"><app-reactive-form-test></app-reactive-form-test></div>
+    <div class="mb-3"><app-reactive-forms-validate></app-reactive-forms-validate></div>
+    Clients list...
+  </div>
+
+</div>
+
+<modal id="modal-dialog-new-client">
+  <div class="modal">
+    <div class="modal-body">
+      <h4 class="mb-4">New client</h4>
+      <button class="btn btn-primary align-top" (click)="closeModal('modal-dialog-new-client')">Close</button>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</modal>

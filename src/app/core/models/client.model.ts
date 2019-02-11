@@ -23,11 +23,13 @@ export class Note {
 }
 
 export class Client {
+  title: string;
+  description: string;
+
   address: Address;
   contacts: Contact[];
-  description: string;
-  title: string;
   notes: Note[];
+
   createdAt: number;
   updatedAt: number;
   createdBy: string;

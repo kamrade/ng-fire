@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { SharedModule } from 'src/app/shared/shared.module';
+
 import { CatalogPageComponent } from './containers/catalog-page/catalog-page.component';
 import { CatalogContentComponent } from './containers/catalog-content/catalog-content.component';
+import { ReactiveFormTestComponent } from './components/reactive-form-test/reactive-form-test.component';
+import { ReactiveFormsValidateComponent } from './components/reactive-forms-validate/reactive-forms-validate.component';
 
 const routes: Routes = [{
   path: '',
@@ -17,14 +24,18 @@ const routes: Routes = [{
   }]
 }];
 
-
 @NgModule({
   declarations: [
     CatalogPageComponent,
-    CatalogContentComponent
+    CatalogContentComponent,
+    ReactiveFormTestComponent,
+    ReactiveFormsValidateComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    // BrowserAnimationsModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ]
 })

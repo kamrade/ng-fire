@@ -1,61 +1,50 @@
 /* MODAL STYLES
 -------------------------------*/
 modal {
-    /* modals are hidden by default */
-    display: none;
+  display: none;
 
-    .modal {
-        /* modal container fixed across whole screen */
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+  .modal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-        /* z-index must be higher than .modal-background */
-        z-index: 1000;
+      z-index: $zindex-modal;
 
-        /* enables scrolling for tall modals */
-        overflow: auto;
+      overflow: auto;
 
+      .modal-body {
+        padding: 20px;
+        max-width: 700px;
+        margin: 40px auto;
+        background: $white;
 
-        .modal-body {
-          padding: 20px;
-          max-width: 700px;
-          margin: 40px auto;
-          background: $white;
+        border-radius: $border-radius;
 
-          /* margin exposes part of the modal background */
-          // margin: 40px;
-          border-radius: $border-radius;
-
-          &.modal-body-sm {
-            max-width: 480px !important;
-          }
+        &.modal-body-sm {
+          max-width: 480px !important;
         }
-    }
+      }
+  }
 
-    .modal-background {
-        /* modal background fixed across whole screen */
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+  .modal-background {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-        /* semi-transparent black  */
-        background-color: $gray-900;
-        opacity: 0.9;
+      background-color: $gray-300;
+      opacity: 0.95;
 
-        /* z-index must be below .modal and above everything else  */
-        z-index: 900;
-    }
+      z-index: $zindex-modal-backdrop;
+  }
 }
 
 body.modal-open {
-    /* body overflow is hidden to hide main scrollbar when modal window is open */
-    overflow: hidden;
-    .modal {
-      display: block;
-    }
+  overflow: hidden;
+  .modal {
+    display: block;
+  }
 }

@@ -13,6 +13,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
 import { SinglePostComponent } from './single-post/single-post.component';
 
 import { ModalComponent } from 'src/app/core/modal.directive';
+import { FormFieldComponent } from './form-field/form-field.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ModalComponent } from 'src/app/core/modal.directive';
     SwitcherComponent,
     SinglePostComponent,
     ModalComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    FormFieldComponent
   ],
   exports: [
     MainNavigationComponent,

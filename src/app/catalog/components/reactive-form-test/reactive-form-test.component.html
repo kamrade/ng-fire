@@ -1,0 +1,47 @@
+<button (click)="openModal('modal-dialog-reactive-form')" class="btn btn-primary mr-2">Reactive forms</button>
+
+<modal id="modal-dialog-reactive-form">
+  <div class="modal">
+    <div class="modal-body">
+      <h4>New client</h4>
+
+
+
+      <form [formGroup]="myForm">
+        <div class="my-3 p-3" [ngStyle]="{'background-color': '#f4f7f9'}">{{myForm.value | json}}</div>
+        <hr/>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="email" formControlName="email">
+        </div>
+
+        <div formArrayName="phones" class="mb-3">
+          <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+
+            <div class="form-row mb-3">
+              <div class="form-group col-sm-3">
+                <input type="text" class="form-control mr-2" placeholder="area..." formControlName="area">
+              </div>
+              <div class="form-group col-sm-3">
+                <input type="text" class="form-control mr-2" placeholder="prefix..." formControlName="prefix">
+              </div>
+              <div class="form-group col-sm-3">
+                <input type="text" class="form-control mr-2" placeholder="line..." formControlName="line">
+              </div>
+              <div class="form-group col-sm-3">
+                <button class="btn btn-outline-danger btn-block" (click)="deletePhone(i)">Delete</button>
+              </div>
+
+            </div>
+
+          </div>
+          <button class="btn btn-primary" (click)="addPhone()">Add phone</button>
+        </div>
+
+      </form>
+
+
+      <button class="btn btn-primary align-top" (click)="closeModal('modal-dialog-reactive-form')">Close</button>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</modal>
